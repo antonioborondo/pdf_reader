@@ -15,6 +15,8 @@ public:
     explicit pdf_reader(QWidget *parent = 0);
     ~pdf_reader();
 
+    void draw_pdf(std::string file_path);
+
 private:
     Ui::pdf_reader *ui;
 };
