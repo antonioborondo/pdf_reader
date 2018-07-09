@@ -32,3 +32,10 @@ HEADERS += \
 
 FORMS += \
         pdf_reader.ui
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/lib/mupdf/build/release/ -lmupdf -lmupdfthird
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/lib/mupdf/build/debug/ -lmupdf -lmupdfthird
+else:unix: LIBS += -L$$PWD/lib/mupdf/build/ -lmupdf -lmupdfthird
+
+INCLUDEPATH += $$PWD/lib/mupdf/include
+DEPENDPATH += $$PWD/lib/mupdf/include
