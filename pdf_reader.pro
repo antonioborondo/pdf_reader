@@ -25,10 +25,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        pdf_reader.cpp
+        pdf_reader.cpp \
+    document.cpp
 
 HEADERS += \
-        pdf_reader.h
+        pdf_reader.h \
+    document.h
 
 FORMS += \
         pdf_reader.ui
