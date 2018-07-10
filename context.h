@@ -3,15 +3,18 @@
 
 #include <mupdf/fitz.h>
 
-class context
+namespace mupdf_wrapper
 {
-    fz_context* m_mupdf_context;
+    class context
+    {
+        fz_context* m_mupdf_context;
 
-public:
-    context();
-    ~context();
-    bool register_document_handlers() const;
-    fz_context* get() const;
-};
+    public:
+        context();
+        ~context();
+        bool register_document_handlers() const;
+        fz_context* get() const;
+    };
+}
 
 #endif

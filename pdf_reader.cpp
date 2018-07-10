@@ -17,12 +17,12 @@ pdf_reader::pdf_reader(QWidget *parent) :
     ui->setupUi(this);
 
     try{
-        const document my_document{"C:/Users/antonioborondo/Desktop/test.pdf"};
+        const mupdf_wrapper::document document{"C:/Users/antonioborondo/Desktop/test.pdf"};
 
         unsigned int page_number{0};
         unsigned int zoom{100};
         unsigned int rotate{0};
-        const QImage image = my_document.get_page_image(page_number, zoom, rotate);
+        const QImage image = document.get_page_image(page_number, zoom, rotate);
 
         QLabel* label = new QLabel();
         label->setPixmap(QPixmap::fromImage(image));
