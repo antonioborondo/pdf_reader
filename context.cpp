@@ -10,7 +10,7 @@ namespace mupdf_wrapper
         m_mupdf_context = fz_new_context(nullptr, nullptr, FZ_STORE_UNLIMITED);
         if(nullptr == m_mupdf_context)
         {
-            throw std::runtime_error("Context cannot be created");
+            throw std::runtime_error("Cannot create context");
         }
     }
 

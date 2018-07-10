@@ -8,13 +8,16 @@ namespace mupdf_wrapper
         : m_context()
         , m_mupdf_document(nullptr)
     {
-        m_context.register_document_handlers();
+        if(!m_context.register_document_handlers())
+        {
+            throw std::runtime_error("Cannot register document handlers");
+        }
 
         fz_try(m_context.get())
             m_mupdf_document = fz_open_document(m_context.get(), filename.c_str());
         fz_catch(m_context.get())
         {
-            throw std::runtime_error("Document cannot be opened");
+            throw std::runtime_error("Cannot open document");
         }
     }
 
@@ -35,7 +38,7 @@ namespace mupdf_wrapper
             total_pages = fz_count_pages(m_context.get(), m_mupdf_document);
         fz_catch(m_context.get())
         {
-            throw std::runtime_error("Total number of pages cannot be obtained");
+            throw std::runtime_error("Cannot get total number of pages");
         }
 
         return total_pages;
