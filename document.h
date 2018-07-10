@@ -17,6 +17,7 @@ namespace mupdf_wrapper
     public:
         document(const std::string& filename);
         ~document();
+        unsigned int get_total_pages();
         const QImage get_page_image(unsigned int page_number, unsigned int zoom, float rotate) const;
     };
 }

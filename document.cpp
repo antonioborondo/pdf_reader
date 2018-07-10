@@ -27,23 +27,22 @@ namespace mupdf_wrapper
         }
     }
 
+    unsigned int document::get_total_pages()
+    {
+        unsigned int total_pages = 0;
+
+        fz_try(m_context.get())
+            total_pages = fz_count_pages(m_context.get(), m_mupdf_document);
+        fz_catch(m_context.get())
+        {
+            throw std::runtime_error("Total number of pages cannot be obtained");
+        }
+
+        return total_pages;
+    }
+
     const QImage document::get_page_image(unsigned int page_number, unsigned int zoom, float rotate) const
     {
-    //    fz_try(m_context.get())
-    //        m_total_pages = fz_count_pages(m_context.get(), m_mupdf_document);
-    //    fz_catch(m_context.get())
-    //    {
-    //        throw std::runtime_error("Pages cannot be counted");
-    //    }
-
-    //    if (page_number < 0 || page_number >= m_page_count)
-    //    {
-    //        //fprintf(stderr, "page number out of range: %d (page count %d)\n", page_number + 1, m_page_count);
-    //        //fz_drop_document(m_, doc);
-    //        //fz_drop_context(ctx);
-    //        //return EXIT_FAILURE;
-    //    }
-
         /* Compute a transformation matrix for the zoom and rotation desired. */
         /* The default resolution without scaling is 72 dpi. */
         fz_matrix ctm;
@@ -62,13 +61,13 @@ namespace mupdf_wrapper
             //return EXIT_FAILURE;
         }
 
-        auto pixmap_samples = fz_pixmap_samples(m_context.get(), pix);
-        auto pixmap_width = fz_pixmap_width(m_context.get(), pix);
-        auto pixmap_height = fz_pixmap_height(m_context.get(), pix);
+        const auto pixmap_samples = fz_pixmap_samples(m_context.get(), pix);
+        const auto pixmap_width = fz_pixmap_width(m_context.get(), pix);
+        const auto pixmap_height = fz_pixmap_height(m_context.get(), pix);
+        const auto image = QImage(pixmap_samples, pixmap_width, pixmap_height, QImage::Format_RGB888, NULL, pixmap_samples);
 
         //fz_drop_pixmap(m_context.get(), pix);
 
-        // with Qt 5.2, Format_RGB888 is correct for any architecture
-        return QImage(pixmap_samples, pixmap_width, pixmap_height, QImage::Format_RGB888, NULL, pixmap_samples);
+        return image;
     }
 }
