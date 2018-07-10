@@ -7,27 +7,36 @@
 
 #include "document.h"
 
+#include <exception>
+#include <iostream>
+
 pdf_reader::pdf_reader(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::pdf_reader)
 {
     ui->setupUi(this);
 
-    const document my_document{"C:/Users/antonioborondo/Desktop/test.pdf"};
+    try{
+        const document my_document{"C:/Users/antonioborondo/Desktop/test.pdf"};
 
-    unsigned int page_number{0};
-    unsigned int zoom{100};
-    unsigned int rotate{0};
-    const QImage image = my_document.get_page_image(page_number, zoom, rotate);
+        unsigned int page_number{0};
+        unsigned int zoom{100};
+        unsigned int rotate{0};
+        const QImage image = my_document.get_page_image(page_number, zoom, rotate);
 
-    QLabel* label = new QLabel();
-    label->setPixmap(QPixmap::fromImage(image));
-    label->resize(label->sizeHint());
+        QLabel* label = new QLabel();
+        label->setPixmap(QPixmap::fromImage(image));
+        label->resize(label->sizeHint());
 
-    QStackedLayout* stacked_layout = new QStackedLayout();
-    ui->centralWidget->setLayout(stacked_layout);
+        QStackedLayout* stacked_layout = new QStackedLayout();
+        ui->centralWidget->setLayout(stacked_layout);
 
-    stacked_layout->addWidget(label);
+        stacked_layout->addWidget(label);
+    }
+    catch(std::exception& e)
+    {
+        std::cout << "Exception: " << e.what() << std::endl;
+    }
 }
 
 pdf_reader::~pdf_reader()
