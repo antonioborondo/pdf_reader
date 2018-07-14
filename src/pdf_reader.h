@@ -3,20 +3,20 @@
 
 #include <QMainWindow>
 
-namespace Ui {
-class pdf_reader;
+namespace Ui
+{
+    class Pdf_reader;
 }
 
-class pdf_reader : public QMainWindow
+class Pdf_reader : public QMainWindow
 {
     Q_OBJECT
 
-public:
-    explicit pdf_reader(QWidget *parent = 0);
-    ~pdf_reader();
+    Ui::Pdf_reader* m_ui;
 
-private:
-    Ui::pdf_reader *ui;
+public:
+    explicit Pdf_reader(QWidget* parent = 0);
+    ~Pdf_reader();
 };
 
-#endif // PDF_READER_H
+#endif

@@ -1,11 +1,13 @@
 #include "pdf_reader.h"
+
 #include <QApplication>
 
-int main(int argc, char *argv[])
+int main(int argc, char** argv)
 {
-    QApplication a(argc, argv);
-    pdf_reader w;
-    w.show();
+    QApplication application(argc, argv);
 
-    return a.exec();
+    Pdf_reader pdf_reader;
+    pdf_reader.show();
+
+    return application.exec();
 }

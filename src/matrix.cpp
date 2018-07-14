@@ -6,8 +6,6 @@ namespace mupdf_wrapper
         : m_mupdf_matrix(nullptr)
     {
         m_mupdf_matrix = new fz_matrix;
-        set_zoom(100);
-        set_rotation(0);
     }
 
     Matrix::~Matrix()

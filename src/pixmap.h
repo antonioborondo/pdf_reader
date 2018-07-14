@@ -1,24 +1,26 @@
 #ifndef MUPDF_WRAPPER_PIXMAP_H
 #define MUPDF_WRAPPER_PIXMAP_H
 
-#include "context.h"
-#include "document.h"
-#include "matrix.h"
+#include <mupdf/fitz.h>
 
 namespace mupdf_wrapper
 {
+    class Context;
+    class Document;
+    class Matrix;
+
     class Pixmap
     {
         fz_pixmap* m_mupdf_pixmap;
-
-        Context m_context;
-        Document m_document;
-        Matrix m_matrix;
+        Context* m_context;
 
     public:
-        Pixmap(const Context& context, const Document& document, const Matrix& matrix, unsigned int page_number);
+        Pixmap(Context* context, Document* document, Matrix* matrix, unsigned int page_number);
         ~Pixmap();
         fz_pixmap* get() const;
+        unsigned char* get_samples() const;
+        int get_width() const;
+        int get_height() const;
     };
 }
 

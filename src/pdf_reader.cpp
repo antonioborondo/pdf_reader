@@ -1,34 +1,51 @@
 #include "pdf_reader.h"
-#include "ui_pdf_reader.h"
 
-#include <QLabel>
-#include <QStackedLayout>
-#include <mupdf/fitz.h>
-
+#include "context.h"
 #include "document.h"
+#include "matrix.h"
+#include "pixmap.h"
+#include "ui_pdf_reader.h"
 
 #include <exception>
 #include <iostream>
 
-pdf_reader::pdf_reader(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::pdf_reader)
+#include <QLabel>
+#include <QStackedLayout>
+
+Pdf_reader::Pdf_reader(QWidget* parent)
+    : QMainWindow(parent)
+    , m_ui(new Ui::Pdf_reader)
 {
-    ui->setupUi(this);
+    m_ui->setupUi(this);
 
     try{
-        const mupdf_wrapper::Document document{"C:/Users/antonioborondo/Desktop/test.pdf"};
+        const std::string filename = "C:/Users/antonioborondo/Desktop/test.pdf";
+        const unsigned int page_number = 0;
+        const unsigned int zoom = 100;
+        const float rotation = 0;
 
-        unsigned int page_number{0};
-        const QImage image = document.get_page_image(page_number);
+        mupdf_wrapper::Context context;
+        context.register_document_handlers();
 
+        mupdf_wrapper::Document document(&context, filename);
+
+        mupdf_wrapper::Matrix matrix;
+        matrix.set_zoom(zoom);
+        matrix.set_rotation(rotation);
+
+        const mupdf_wrapper::Pixmap pixmap(&context, &document, &matrix, page_number);
+        const auto samples = pixmap.get_samples();
+        const auto width = pixmap.get_width();
+        const auto height = pixmap.get_height();
+
+        const auto image = QImage(samples, width, height, QImage::Format_RGB888, nullptr, samples);
+
+        // Add image to UI
         QLabel* label = new QLabel();
         label->setPixmap(QPixmap::fromImage(image));
         label->resize(label->sizeHint());
-
         QStackedLayout* stacked_layout = new QStackedLayout();
-        ui->centralWidget->setLayout(stacked_layout);
-
+        m_ui->centralWidget->setLayout(stacked_layout);
         stacked_layout->addWidget(label);
     }
     catch(std::exception& e)
@@ -37,7 +54,7 @@ pdf_reader::pdf_reader(QWidget *parent) :
     }
 }
 
-pdf_reader::~pdf_reader()
+Pdf_reader::~Pdf_reader()
 {
-    delete ui;
+    delete m_ui;
 }

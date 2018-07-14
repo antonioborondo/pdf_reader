@@ -28,17 +28,13 @@ namespace mupdf_wrapper
         return m_mupdf_context;
     }
 
-    bool Context::register_document_handlers() const
+    void Context::register_document_handlers() const
     {
-        auto document_handlers_registered = true;
-
         fz_try(m_mupdf_context)
             fz_register_document_handlers(m_mupdf_context);
         fz_catch(m_mupdf_context)
         {
-            document_handlers_registered = false;
+            throw std::runtime_error("Cannot register document handlers");
         }
-
-        return document_handlers_registered;
     }
 }

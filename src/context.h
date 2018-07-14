@@ -13,7 +13,7 @@ namespace mupdf_wrapper
         Context();
         ~Context();
         fz_context* get() const;
-        bool register_document_handlers() const;
+        void register_document_handlers() const;
     };
 }
 
