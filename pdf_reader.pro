@@ -25,12 +25,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 HEADERS += \
     src/document.h \
     src/context.h \
+    src/matrix.h \
     src/pdf_reader.h
 
 SOURCES += \
     src/document.cpp \
     src/context.cpp \
     src/main.cpp \
+    src/matrix.cpp \
     src/pdf_reader.cpp
 
 FORMS += \

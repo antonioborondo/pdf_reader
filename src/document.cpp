@@ -6,6 +6,7 @@ namespace mupdf_wrapper
 {
     document::document(const std::string& filename)
         : m_context()
+        , m_matrix()
         , m_mupdf_document(nullptr)
     {
         if(!m_context.register_document_handlers())
@@ -44,18 +45,17 @@ namespace mupdf_wrapper
         return total_pages;
     }
 
+
+
     const QImage document::get_page_image(unsigned int page_number, unsigned int zoom, float rotate) const
     {
-        /* Compute a transformation matrix for the zoom and rotation desired. */
-        /* The default resolution without scaling is 72 dpi. */
-        fz_matrix ctm;
-        fz_scale(&ctm, zoom / 100, zoom / 100);
-        fz_pre_rotate(&ctm, rotate);
+        m_matrix.set_rotation(rotate);
+        m_matrix.set_zoom(zoom);
 
         /* Render page to an RGB pixmap. */
             fz_pixmap *pix;
         fz_try(m_context.get())
-            pix = fz_new_pixmap_from_page_number(m_context.get(), m_mupdf_document, page_number, &ctm, fz_device_rgb(m_context.get()), 0);
+            pix = fz_new_pixmap_from_page_number(m_context.get(), m_mupdf_document, page_number, m_matrix.get(), fz_device_rgb(m_context.get()), 0);
         fz_catch(m_context.get())
         {
             //fprintf(stderr, "cannot render page: %s\n", fz_caught_message(m_mupdf_context));

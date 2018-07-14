@@ -2,6 +2,7 @@
 #define DOCUMENT_H
 
 #include "context.h"
+#include "matrix.h"
 
 #include <QImage>
 
@@ -12,6 +13,7 @@ namespace mupdf_wrapper
     class document
     {
         mupdf_wrapper::context m_context;
+        mupdf_wrapper::matrix m_matrix;
         fz_document* m_mupdf_document;
 
     public:
