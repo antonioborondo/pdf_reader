@@ -5,16 +5,16 @@
 
 namespace mupdf_wrapper
 {
-    class matrix
+    class Matrix
     {
         fz_matrix* m_mupdf_matrix;
 
     public:
-        matrix();
-        ~matrix();
+        Matrix();
+        ~Matrix();
+        const fz_matrix* get() const;
         void set_zoom(unsigned int zoom) const;
         void set_rotation(float rotation) const;
-        const fz_matrix* get() const;
     };
 }
 

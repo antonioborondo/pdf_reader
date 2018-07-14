@@ -1,13 +1,15 @@
 #include "document.h"
 
+#include "pixmap.h"
+
 #include <stdexcept>
 
 namespace mupdf_wrapper
 {
-    document::document(const std::string& filename)
-        : m_context()
+    Document::Document(const std::string& filename)
+        : m_mupdf_document(nullptr)
+        , m_context()
         , m_matrix()
-        , m_mupdf_document(nullptr)
     {
         if(!m_context.register_document_handlers())
         {
@@ -22,7 +24,7 @@ namespace mupdf_wrapper
         }
     }
 
-    document::~document()
+    Document::~Document()
     {
         if(nullptr != m_mupdf_document)
         {
@@ -31,17 +33,22 @@ namespace mupdf_wrapper
         }
     }
 
-    void document::set_zoom(unsigned int zoom) const
+    fz_document* Document::get() const
+    {
+        return m_mupdf_document;
+    }
+
+    void Document::set_zoom(unsigned int zoom) const
     {
         m_matrix.set_zoom(zoom);
     }
 
-    void document::set_rotation(float rotation) const
+    void Document::set_rotation(float rotation) const
     {
         m_matrix.set_rotation(rotation);
     }
 
-    unsigned int document::get_total_pages()
+    unsigned int Document::get_total_pages()
     {
         unsigned int total_pages = 0;
 
@@ -55,7 +62,7 @@ namespace mupdf_wrapper
         return total_pages;
     }
 
-    const QImage document::get_page_image(unsigned int page_number) const
+    const QImage Document::get_page_image(unsigned int page_number) const
     {
         /* Render page to an RGB pixmap. */
             fz_pixmap *pix;
@@ -69,12 +76,13 @@ namespace mupdf_wrapper
             //return EXIT_FAILURE;
         }
 
+//        Pixmap pixmap(m_context, *this, m_matrix, page_number);
+//        const auto pix = pixmap.get();
+
         const auto pixmap_samples = fz_pixmap_samples(m_context.get(), pix);
         const auto pixmap_width = fz_pixmap_width(m_context.get(), pix);
         const auto pixmap_height = fz_pixmap_height(m_context.get(), pix);
         const auto image = QImage(pixmap_samples, pixmap_width, pixmap_height, QImage::Format_RGB888, NULL, pixmap_samples);
-
-        //fz_drop_pixmap(m_context.get(), pix);
 
         return image;
     }

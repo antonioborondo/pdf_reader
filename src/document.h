@@ -10,15 +10,17 @@
 
 namespace mupdf_wrapper
 {
-    class document
+    class Document
     {
-        mupdf_wrapper::context m_context;
-        mupdf_wrapper::matrix m_matrix;
         fz_document* m_mupdf_document;
 
+        Context m_context;
+        Matrix m_matrix;
+
     public:
-        document(const std::string& filename);
-        ~document();
+        Document(const std::string& filename);
+        ~Document();
+        fz_document* get() const;
         void set_zoom(unsigned int zoom) const;
         void set_rotation(float rotation) const;
         unsigned int get_total_pages();

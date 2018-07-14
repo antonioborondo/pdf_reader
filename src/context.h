@@ -1,19 +1,19 @@
-#ifndef CONTEXT_H
-#define CONTEXT_H
+#ifndef MUPDF_WRAPPER_CONTEXT_H
+#define MUPDF_WRAPPER_CONTEXT_H
 
 #include <mupdf/fitz.h>
 
 namespace mupdf_wrapper
 {
-    class context
+    class Context
     {
         fz_context* m_mupdf_context;
 
     public:
-        context();
-        ~context();
-        bool register_document_handlers() const;
+        Context();
+        ~Context();
         fz_context* get() const;
+        bool register_document_handlers() const;
     };
 }
 

@@ -2,31 +2,32 @@
 
 namespace mupdf_wrapper
 {
-    matrix::matrix()
+    Matrix::Matrix()
+        : m_mupdf_matrix(nullptr)
     {
         m_mupdf_matrix = new fz_matrix;
         set_zoom(100);
         set_rotation(0);
     }
 
-    matrix::~matrix()
+    Matrix::~Matrix()
     {
         delete m_mupdf_matrix;
         m_mupdf_matrix = nullptr;
     }
 
-    void matrix::set_zoom(unsigned int zoom) const
+    const fz_matrix* Matrix::get() const
+    {
+        return m_mupdf_matrix;
+    }
+
+    void Matrix::set_zoom(unsigned int zoom) const
     {
         fz_scale(m_mupdf_matrix, zoom/100, zoom/100);
     }
 
-    void matrix::set_rotation(float rotation) const
+    void Matrix::set_rotation(float rotation) const
     {
         fz_pre_rotate(m_mupdf_matrix, rotation);
-    }
-
-    const fz_matrix* matrix::get() const
-    {
-        return m_mupdf_matrix;
     }
 }

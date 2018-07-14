@@ -4,7 +4,7 @@
 
 namespace mupdf_wrapper
 {
-    context::context()
+    Context::Context()
         : m_mupdf_context(nullptr)
     {
         m_mupdf_context = fz_new_context(nullptr, nullptr, FZ_STORE_UNLIMITED);
@@ -14,7 +14,7 @@ namespace mupdf_wrapper
         }
     }
 
-    context::~context()
+    Context::~Context()
     {
         if(nullptr != m_mupdf_context)
         {
@@ -23,7 +23,12 @@ namespace mupdf_wrapper
         }
     }
 
-    bool context::register_document_handlers() const
+    fz_context* Context::get() const
+    {
+        return m_mupdf_context;
+    }
+
+    bool Context::register_document_handlers() const
     {
         auto document_handlers_registered = true;
 
@@ -35,10 +40,5 @@ namespace mupdf_wrapper
         }
 
         return document_handlers_registered;
-    }
-
-    fz_context* context::get() const
-    {
-        return m_mupdf_context;
     }
 }

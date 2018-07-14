@@ -26,14 +26,16 @@ HEADERS += \
     src/document.h \
     src/context.h \
     src/matrix.h \
-    src/pdf_reader.h
+    src/pdf_reader.h \
+    src/pixmap.h
 
 SOURCES += \
     src/document.cpp \
     src/context.cpp \
     src/main.cpp \
     src/matrix.cpp \
-    src/pdf_reader.cpp
+    src/pdf_reader.cpp \
+    src/pixmap.cpp
 
 FORMS += \
     src/pdf_reader.ui
