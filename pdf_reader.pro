@@ -22,20 +22,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+HEADERS += \
+    src/document.h \
+    src/context.h \
+    src/pdf_reader.h
 
 SOURCES += \
-        main.cpp \
-        pdf_reader.cpp \
-    document.cpp \
-    context.cpp
-
-HEADERS += \
-        pdf_reader.h \
-    document.h \
-    context.h
+    src/document.cpp \
+    src/context.cpp \
+    src/main.cpp \
+    src/pdf_reader.cpp
 
 FORMS += \
-        pdf_reader.ui
+    src/pdf_reader.ui
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/lib/mupdf/build/release/ -lmupdf -lmupdfthird
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/lib/mupdf/build/debug/ -lmupdf -lmupdfthird
