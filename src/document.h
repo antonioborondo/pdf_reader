@@ -1,5 +1,5 @@
-#ifndef DOCUMENT_H
-#define DOCUMENT_H
+#ifndef MUPDF_WRAPPER_DOCUMENT_H
+#define MUPDF_WRAPPER_DOCUMENT_H
 
 #include "context.h"
 #include "matrix.h"
@@ -19,8 +19,10 @@ namespace mupdf_wrapper
     public:
         document(const std::string& filename);
         ~document();
+        void set_zoom(unsigned int zoom) const;
+        void set_rotation(float rotation) const;
         unsigned int get_total_pages();
-        const QImage get_page_image(unsigned int page_number, unsigned int zoom, float rotate) const;
+        const QImage get_page_image(unsigned int page_number) const;
     };
 }
 

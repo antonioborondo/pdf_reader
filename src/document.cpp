@@ -31,6 +31,16 @@ namespace mupdf_wrapper
         }
     }
 
+    void document::set_zoom(unsigned int zoom) const
+    {
+        m_matrix.set_zoom(zoom);
+    }
+
+    void document::set_rotation(float rotation) const
+    {
+        m_matrix.set_rotation(rotation);
+    }
+
     unsigned int document::get_total_pages()
     {
         unsigned int total_pages = 0;
@@ -45,13 +55,8 @@ namespace mupdf_wrapper
         return total_pages;
     }
 
-
-
-    const QImage document::get_page_image(unsigned int page_number, unsigned int zoom, float rotate) const
+    const QImage document::get_page_image(unsigned int page_number) const
     {
-        m_matrix.set_rotation(rotate);
-        m_matrix.set_zoom(zoom);
-
         /* Render page to an RGB pixmap. */
             fz_pixmap *pix;
         fz_try(m_context.get())
