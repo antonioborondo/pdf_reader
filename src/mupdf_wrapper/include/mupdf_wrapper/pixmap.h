@@ -1,6 +1,8 @@
 #ifndef MUPDF_WRAPPER_PIXMAP_H
 #define MUPDF_WRAPPER_PIXMAP_H
 
+#include "mupdf_wrapper.h"
+
 #include <mupdf/fitz.h>
 
 namespace mupdf_wrapper
@@ -9,7 +11,7 @@ namespace mupdf_wrapper
     class Document;
     class Matrix;
 
-    class Pixmap
+    class MUPDF_WRAPPER_EXPORT Pixmap
     {
         fz_pixmap* m_mupdf_pixmap;
         Context* m_context;

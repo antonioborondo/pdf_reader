@@ -1,11 +1,13 @@
 #ifndef MUPDF_WRAPPER_MATRIX_H
 #define MUPDF_WRAPPER_MATRIX_H
 
+#include "mupdf_wrapper.h"
+
 #include <mupdf/fitz.h>
 
 namespace mupdf_wrapper
 {
-    class Matrix
+    class MUPDF_WRAPPER_EXPORT Matrix
     {
         fz_matrix* m_mupdf_matrix;
 

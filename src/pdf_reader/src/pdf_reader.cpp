@@ -1,9 +1,9 @@
 #include "pdf_reader.h"
 
-#include "context.h"
-#include "document.h"
-#include "matrix.h"
-#include "pixmap.h"
+#include "mupdf_wrapper/context.h"
+#include "mupdf_wrapper/document.h"
+#include "mupdf_wrapper/matrix.h"
+#include "mupdf_wrapper/pixmap.h"
 #include "ui_pdf_reader.h"
 
 #include <exception>
