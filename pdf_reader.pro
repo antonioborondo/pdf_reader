@@ -1,5 +1,7 @@
 TEMPLATE = subdirs
 
+CONFIG += ordered
+
 SUBDIRS += \
-    src/pdf_reader \
-    src/mupdf_wrapper
+    src/mupdf_wrapper \
+    src/pdf_reader
