@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/first_page.svg</file>
+        <file>images/previous_page.svg</file>
+        <file>images/next_page.svg</file>
+        <file>images/last_page.svg</file>
+    </qresource>
+</RCC>
