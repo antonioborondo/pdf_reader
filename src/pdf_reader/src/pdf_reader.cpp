@@ -10,17 +10,38 @@
 #include <iostream>
 #include <memory>
 
-#include <QLabel>
-#include <QStackedLayout>
+#include <QFileDialog>
 
 Pdf_reader::Pdf_reader(QWidget* parent)
     : QMainWindow(parent)
-    , m_ui(new Ui::Pdf_reader)
+    , m_ui(nullptr)
+    , m_label(nullptr)
+    , m_stacked_layout(nullptr)
 {
-    m_ui->setupUi(this);
+    m_ui = new Ui::Pdf_reader();
+    m_label = new QLabel();
+    m_stacked_layout = new QStackedLayout();
 
+    m_ui->setupUi(this);
+    m_ui->centralWidget->setLayout(m_stacked_layout);
+    m_stacked_layout->addWidget(m_label);
+}
+
+Pdf_reader::~Pdf_reader()
+{
+    delete m_stacked_layout;
+    m_stacked_layout = nullptr;
+
+    delete m_label;
+    m_label = nullptr;
+
+    delete m_ui;
+    m_ui = nullptr;
+}
+
+void Pdf_reader::open_file(const std::string& filename)
+{
     try{
-        const std::string filename = "C:/Users/antonioborondo/Desktop/test.pdf";
         const unsigned int page_number = 0;
         const unsigned int zoom = 100;
         const float rotation = 0;
@@ -42,12 +63,8 @@ Pdf_reader::Pdf_reader(QWidget* parent)
         const auto image = QImage(samples, width, height, QImage::Format_RGB888, nullptr, samples);
 
         // Add image to UI
-        QLabel* label = new QLabel();
-        label->setPixmap(QPixmap::fromImage(image));
-        label->resize(label->sizeHint());
-        QStackedLayout* stacked_layout = new QStackedLayout();
-        m_ui->centralWidget->setLayout(stacked_layout);
-        stacked_layout->addWidget(label);
+        m_label->setPixmap(QPixmap::fromImage(image));
+        m_label->resize(m_label->sizeHint());
     }
     catch(std::exception& e)
     {
@@ -55,7 +72,12 @@ Pdf_reader::Pdf_reader(QWidget* parent)
     }
 }
 
-Pdf_reader::~Pdf_reader()
+void Pdf_reader::on_menu_open_file_triggered()
 {
-    delete m_ui;
+    const auto filename = QFileDialog::getOpenFileName(this, tr("Open file"), nullptr, tr("*.pdf"));
+
+    if(!filename.isEmpty())
+    {
+        open_file(filename.toStdString());
+    }
 }
