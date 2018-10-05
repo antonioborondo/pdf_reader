@@ -8,9 +8,11 @@ TEMPLATE = app
 DEFINES += QT_DEPRECATED_WARNINGS
 
 HEADERS += \
+    src/document.h \
     src/pdf_reader.h
 
 SOURCES += \
+    src/document.cpp \
     src/main.cpp \
     src/pdf_reader.cpp
 
