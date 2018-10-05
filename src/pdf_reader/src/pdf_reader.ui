@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>pdf_reader</string>
   </property>
-  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QWidget" name="central_widget"/>
   <widget class="QMenuBar" name="menu_bar">
    <property name="geometry">
     <rect>
