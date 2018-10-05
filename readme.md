@@ -1,4 +1,10 @@
 # PDF reader
+![Screenshot](resources/screenshot.png?raw=true)
+
+## Features
+- Open PDF documents.
+- Page navigation controls.
+
 ## Prepare the repository
 Clone the repository and run the following command to initialize the submodules:
 ```
