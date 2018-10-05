@@ -6,7 +6,6 @@
 #include <memory>
 
 class QLabel;
-class QStackedLayout;
 
 namespace Ui
 {
@@ -23,7 +22,6 @@ namespace pdf_reader
 
         Ui::Pdf_reader* m_ui;
         QLabel* m_label;
-        QStackedLayout* m_stacked_layout;
 
         std::unique_ptr<pdf_reader::Document> m_document;
 

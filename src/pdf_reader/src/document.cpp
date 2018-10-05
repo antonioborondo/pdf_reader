@@ -42,7 +42,6 @@ namespace pdf_reader
         }
 
         return get_page(page_number);
-
     }
 
     std::shared_ptr<QImage> Document::get_page(int page_number)
