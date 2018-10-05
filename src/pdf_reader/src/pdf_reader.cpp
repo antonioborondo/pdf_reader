@@ -5,7 +5,6 @@
 
 #include <QFileDialog>
 #include <QLabel>
-#include <QStackedLayout>
 
 #include <exception>
 #include <iostream>
@@ -16,27 +15,22 @@ namespace pdf_reader
         : QMainWindow(parent)
         , m_ui(nullptr)
         , m_label(nullptr)
-        , m_stacked_layout(nullptr)
     {
-        m_ui = new Ui::Pdf_reader();
         m_label = new QLabel();
-        m_stacked_layout = new QStackedLayout();
+        m_label->setAlignment(Qt::AlignHCenter);
 
+        m_ui = new Ui::Pdf_reader();
         m_ui->setupUi(this);
-        m_ui->central_widget->setLayout(m_stacked_layout);
-        m_stacked_layout->addWidget(m_label);
+        m_ui->scroll_area_content->layout()->addWidget(m_label);
     }
 
     Pdf_reader::~Pdf_reader()
     {
-        delete m_stacked_layout;
-        m_stacked_layout = nullptr;
+        delete m_ui;
+        m_ui = nullptr;
 
         delete m_label;
         m_label = nullptr;
-
-        delete m_ui;
-        m_ui = nullptr;
     }
 
     void Pdf_reader::open_file(const std::string& filename)
