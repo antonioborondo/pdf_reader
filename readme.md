@@ -24,3 +24,10 @@ cd lib/mupdf/
 make build=debug HAVE_X11=no HAVE_GLUT=no -j8 libs
 make HAVE_X11=no HAVE_GLUT=no -j8 libs
 ```
+## Compile PDF reader
+```
+mkdir pdf_reader_cmake/
+cd pdf_reader_cmake/
+cmake -G "MinGW Makefiles" -DCMAKE_SH=CMAKE_SH-NOTFOUND -DCMAKE_PREFIX_PATH=<MSYS2_INSTALLATION_PATH>/mingw64 -DCMAKE_C_COMPILER=<MSYS2_INSTALLATION_PATH>/mingw64/bin/cc.exe -DCMAKE_CXX_COMPILER=<MSYS2_INSTALLATION_PATH>/mingw64/bin/c++.exe ../pdf_reader
+cmake --build .
+```
