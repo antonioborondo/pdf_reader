@@ -13,7 +13,7 @@ namespace mupdf_wrapper
         , m_context(context)
     {
         fz_try(context->get())
-            m_mupdf_pixmap = fz_new_pixmap_from_page_number(m_context->get(), document->get(), page_number, matrix->get(), fz_device_rgb(m_context->get()), 0);
+            m_mupdf_pixmap = fz_new_pixmap_from_page_number(m_context->get(), document->get(), page_number, *matrix->get(), fz_device_rgb(m_context->get()), 0);
         fz_catch(m_context->get())
         {
             throw std::runtime_error("Cannot create pixmap from page number");

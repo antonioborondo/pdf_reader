@@ -8,6 +8,9 @@
 
 #include <exception>
 #include <iostream>
+#include <memory>
+
+using namespace std;
 
 namespace pdf_reader
 {
@@ -33,19 +36,19 @@ namespace pdf_reader
         m_label = nullptr;
     }
 
-    void Pdf_reader::open_file(const std::string& filename)
+    void Pdf_reader::open_file(const string& filename)
     {
         try
         {
-            m_document = std::make_unique<pdf_reader::Document>(filename);
+            m_document = make_unique<pdf_reader::Document>(filename);
         }
-        catch(const std::exception& e)
+        catch(const exception& e)
         {
-            std::cout << "Exception: " << e.what() << std::endl;
+            cout << "Exception: " << e.what() << endl;
         }
     }
 
-    void Pdf_reader::show_page(std::shared_ptr<QImage> page)
+    void Pdf_reader::show_page(shared_ptr<QImage> page)
     {
         if(nullptr != page)
         {
