@@ -21,6 +21,6 @@ pacman -S make mingw-w64-x86_64-gcc mingw-w64-x86_64-gdb mingw-w64-x86_64-qt-cre
 Run the following commands to build muPDF:
 ```
 cd lib/mupdf/
-make build=debug HAVE_X11=no HAVE_GLUT=no -j8 libs
-make HAVE_X11=no HAVE_GLUT=no -j8 libs
+XCFLAGS=-fPIC make build=debug HAVE_X11=no HAVE_GLUT=no -j8 libs
+XCFLAGS=-fPIC make HAVE_X11=no HAVE_GLUT=no -j8 libs
 ```

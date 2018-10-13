@@ -1,1 +1,3 @@
 *.user
+src/mupdf_wrapper/build
+src/pdf_reader/build
