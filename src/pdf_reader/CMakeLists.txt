@@ -24,7 +24,7 @@ set(FORM_FILES
 )
 
 set(RESOURCE_FILES
-    resources/resources.qrc
+    src/pdf_reader.qrc
 )
 
 add_executable(pdf_reader

@@ -118,8 +118,8 @@
   </action>
   <action name="action_first_page">
    <property name="icon">
-    <iconset resource="../resources/resources.qrc">
-     <normaloff>:/images/first_page.svg</normaloff>:/images/first_page.svg</iconset>
+    <iconset resource="pdf_reader.qrc">
+     <normaloff>:/resources/images/first_page.svg</normaloff>:/resources/images/first_page.svg</iconset>
    </property>
    <property name="text">
     <string>First page</string>
@@ -127,8 +127,8 @@
   </action>
   <action name="action_previous_page">
    <property name="icon">
-    <iconset resource="../resources/resources.qrc">
-     <normaloff>:/images/previous_page.svg</normaloff>:/images/previous_page.svg</iconset>
+    <iconset resource="pdf_reader.qrc">
+     <normaloff>:/resources/images/previous_page.svg</normaloff>:/resources/images/previous_page.svg</iconset>
    </property>
    <property name="text">
     <string>Previous page</string>
@@ -136,8 +136,8 @@
   </action>
   <action name="action_next_page">
    <property name="icon">
-    <iconset resource="../resources/resources.qrc">
-     <normaloff>:/images/next_page.svg</normaloff>:/images/next_page.svg</iconset>
+    <iconset resource="pdf_reader.qrc">
+     <normaloff>:/resources/images/next_page.svg</normaloff>:/resources/images/next_page.svg</iconset>
    </property>
    <property name="text">
     <string>Next page</string>
@@ -145,8 +145,8 @@
   </action>
   <action name="action_last_page">
    <property name="icon">
-    <iconset resource="../resources/resources.qrc">
-     <normaloff>:/images/last_page.svg</normaloff>:/images/last_page.svg</iconset>
+    <iconset resource="pdf_reader.qrc">
+     <normaloff>:/resources/images/last_page.svg</normaloff>:/resources/images/last_page.svg</iconset>
    </property>
    <property name="text">
     <string>Last page</string>
@@ -155,7 +155,7 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="../resources/resources.qrc"/>
+  <include location="pdf_reader.qrc"/>
  </resources>
  <connections/>
 </ui>
