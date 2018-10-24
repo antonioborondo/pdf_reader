@@ -1,4 +1,6 @@
 # PDF reader
+[![CircleCI](https://circleci.com/gh/antonioborondo/pdf_reader.svg?style=svg)](https://circleci.com/gh/antonioborondo/pdf_reader)
+
 ![Screenshot](resources/screenshot.png?raw=true)
 
 ## Features

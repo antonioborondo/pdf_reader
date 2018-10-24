@@ -1,0 +1,51 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: ubuntu:bionic
+    steps:
+      - checkout
+      - run:
+          name: Install packages
+          command: >
+            apt-get update &&
+            apt-get -y dist-upgrade &&
+            apt-get -y install git cmake build-essential qt5-default
+      - run:
+          name: Update submodules
+          command: >
+            mkdir -p ~/.ssh &&
+            touch ~/.ssh/known_hosts &&
+            ssh-keyscan github.com >> ~/.ssh/known_hosts &&
+            git submodule update --init --recursive
+      - run:
+          name: Build muPDF library
+          command: >
+            export CFLAGS="-fPIC" &&
+            cd lib/mupdf/ &&
+            make build=debug HAVE_X11=no HAVE_GLUT=no -j `nproc` libs &&
+            make HAVE_X11=no HAVE_GLUT=no -j `nproc` libs
+      - run:
+          name: Build debug
+          command: >
+            mkdir cmake_debug &&
+            cd cmake_debug &&
+            cmake -DCMAKE_BUILD_TYPE=Debug .. &&
+            make -j `nproc`
+      - run:
+          name: Test debug
+          command: >
+            cd cmake_debug/bin &&
+            ./mupdf_wrapper_test
+      - run:
+          name: Build release
+          command: >
+            mkdir cmake_release &&
+            cd cmake_release &&
+            cmake -DCMAKE_BUILD_TYPE=Release .. &&
+            make -j `nproc`
+      - run:
+          name: Test release
+          command: >
+            cd cmake_release/bin &&
+            ./mupdf_wrapper_test
