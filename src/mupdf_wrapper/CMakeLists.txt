@@ -1,6 +1,6 @@
 project(mupdf_wrapper)
 
-set(HEADER_FILES
+set(HEADERS
     include/mupdf_wrapper/context.h
     include/mupdf_wrapper/document.h
     include/mupdf_wrapper/matrix.h
@@ -9,7 +9,7 @@ set(HEADER_FILES
     include/mupdf_wrapper/pixmap.h
 )
 
-set(SOURCE_FILES
+set(SOURCES
     src/context.cpp
     src/document.cpp
     src/matrix.cpp
@@ -18,8 +18,8 @@ set(SOURCE_FILES
 )
 
 add_library(mupdf_wrapper SHARED
-    ${HEADER_FILES}
-    ${SOURCE_FILES}
+    ${HEADERS}
+    ${SOURCES}
 )
 
 add_definitions(
@@ -45,7 +45,7 @@ target_link_libraries(mupdf_wrapper
     optimized ${CMAKE_SOURCE_DIR}/lib/mupdf/build/release/libmupdfthird.a
 )
 
-set(TEST_FILES
+set(TESTS
     test/context_test.cpp
     test/document_test.cpp
     test/main.cpp
@@ -53,7 +53,7 @@ set(TEST_FILES
 )
 
 add_executable(mupdf_wrapper_test
-    ${TEST_FILES}
+    ${TESTS}
 )
 
 target_include_directories(mupdf_wrapper_test
@@ -64,4 +64,10 @@ target_include_directories(mupdf_wrapper_test
 target_link_libraries(mupdf_wrapper_test
     PRIVATE
     mupdf_wrapper
+)
+
+add_custom_command(TARGET mupdf_wrapper_test POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${CMAKE_CURRENT_SOURCE_DIR}/test/test_files
+    ${BINARY_DIRECTORY}/test_files
 )
