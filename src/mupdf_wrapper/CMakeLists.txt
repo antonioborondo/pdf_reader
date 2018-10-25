@@ -5,6 +5,7 @@ set(HEADER_FILES
     include/mupdf_wrapper/document.h
     include/mupdf_wrapper/matrix.h
     include/mupdf_wrapper/mupdf_wrapper.h
+    include/mupdf_wrapper/page.h
     include/mupdf_wrapper/pixmap.h
 )
 
@@ -12,6 +13,7 @@ set(SOURCE_FILES
     src/context.cpp
     src/document.cpp
     src/matrix.cpp
+    src/page.cpp
     src/pixmap.cpp
 )
 
