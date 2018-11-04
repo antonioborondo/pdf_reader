@@ -66,9 +66,3 @@ target_link_libraries(mupdf_wrapper_test
     PRIVATE
     mupdf_wrapper
 )
-
-add_custom_command(TARGET mupdf_wrapper_test POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory
-    ${CMAKE_CURRENT_SOURCE_DIR}/test/test_files
-    ${BINARY_DIRECTORY}/test_files
-)
