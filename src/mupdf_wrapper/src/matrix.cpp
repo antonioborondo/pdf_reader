@@ -21,7 +21,7 @@ namespace mupdf_wrapper
 
     void Matrix::set_zoom(unsigned int zoom) const
     {
-        fz_scale(m_mupdf_matrix, zoom/100, zoom/100);
+        fz_scale(m_mupdf_matrix, zoom/100.f, zoom/100.f);
     }
 
     void Matrix::set_rotation(float rotation) const
