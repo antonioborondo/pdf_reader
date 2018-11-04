@@ -35,8 +35,8 @@ jobs:
       - run:
           name: Test debug
           command: >
-            cd cmake_debug/bin &&
-            ./mupdf_wrapper_test
+            cd cmake_debug &&
+            ctest -V
       - run:
           name: Build release
           command: >
@@ -47,5 +47,5 @@ jobs:
       - run:
           name: Test release
           command: >
-            cd cmake_release/bin &&
-            ./mupdf_wrapper_test
+            cd cmake_release &&
+            ctest -V
