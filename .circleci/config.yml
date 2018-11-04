@@ -35,7 +35,7 @@ jobs:
       - run:
           name: Test debug
           command: >
-            cd cmake_debug/bin &&
+            cd cmake_debug &&
             ctest -V
       - run:
           name: Build release
@@ -47,5 +47,5 @@ jobs:
       - run:
           name: Test release
           command: >
-            cd cmake_release/bin &&
+            cd cmake_release &&
             ctest -V
