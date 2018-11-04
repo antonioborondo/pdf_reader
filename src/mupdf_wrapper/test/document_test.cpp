@@ -20,6 +20,9 @@ TEST_CASE("GIVEN one page empty document WHEN create new document THEN document 
 
     std::shared_ptr<mupdf_wrapper::Document> document;
     REQUIRE_NOTHROW(document = std::make_shared<mupdf_wrapper::Document>(context, "one_page_empty_document.pdf"));
+
+    const auto mupdf_document = document->get();
+    REQUIRE(nullptr != mupdf_document);
 }
 
 TEST_CASE("GIVEN one page empty document WHEN create new document without register document handlers THEN an exception is thrown", "[document]")
