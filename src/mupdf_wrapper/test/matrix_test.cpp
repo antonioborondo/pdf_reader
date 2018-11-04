@@ -7,6 +7,5 @@ TEST_CASE("GIVEN no Matrix WHEN create new Matrix THEN Matrix is created", "[mat
     const mupdf_wrapper::Matrix matrix;
 
     const auto mupdf_matrix = matrix.get();
-
     REQUIRE(nullptr != mupdf_matrix);
 }
