@@ -26,6 +26,6 @@ namespace mupdf_wrapper
 
     void Matrix::set_rotation(float rotation) const
     {
-        fz_pre_rotate(m_mupdf_matrix, rotation);
+        fz_rotate(m_mupdf_matrix, rotation);
     }
 }
