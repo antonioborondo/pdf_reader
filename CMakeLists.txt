@@ -11,3 +11,9 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BINARY_DIRECTORY})
 
 add_subdirectory(src/mupdf_wrapper)
 add_subdirectory(src/pdf_reader)
+
+enable_testing()
+
+set(TEST_FILES ${CMAKE_SOURCE_DIR}/resources/test_files)
+
+add_test(NAME mupdf_wrapper_test COMMAND mupdf_wrapper_test WORKING_DIRECTORY ${TEST_FILES})
