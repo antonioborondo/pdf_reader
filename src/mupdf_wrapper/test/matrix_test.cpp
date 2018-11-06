@@ -47,7 +47,7 @@ SCENARIO("Set Matrix zoom", "[Matrix]")
                 CHECK(mupdf_matrix->a == Approx(0.5));
                 CHECK(mupdf_matrix->b == Approx(0));
                 CHECK(mupdf_matrix->c == Approx(0));
-                CHECK(mupdf_matrix->d == Approx(0.5f));
+                CHECK(mupdf_matrix->d == Approx(0.5));
                 CHECK(mupdf_matrix->e == Approx(0));
                 CHECK(mupdf_matrix->f == Approx(0));
             }

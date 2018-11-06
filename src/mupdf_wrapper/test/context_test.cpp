@@ -8,10 +8,9 @@ SCENARIO("Create Context", "[Context]")
 {
     WHEN("Create Context")
     {
-        std::unique_ptr<mupdf_wrapper::Context> context;
-
         THEN("No exception is thrown")
         {
+            std::unique_ptr<mupdf_wrapper::Context> context;
             REQUIRE_NOTHROW(context = std::make_unique<mupdf_wrapper::Context>());
 
             AND_THEN("Context is created")
