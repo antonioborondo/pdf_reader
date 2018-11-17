@@ -51,6 +51,7 @@ set(TEST_FILES
     test/main.cpp
     test/matrix_test.cpp
     test/page_test.cpp
+    test/pixmap_test.cpp
 )
 
 add_executable(mupdf_wrapper_test
