@@ -7,6 +7,32 @@
 
 #include <memory>
 
+namespace
+{
+    bool is_pixmap_empty(const mupdf_wrapper::Pixmap& pixmap)
+    {
+        const auto height = pixmap.get_height();
+        const auto width = pixmap.get_width();
+
+        const auto mupdf_pixmap = pixmap.get();
+
+        for(auto y = 0; y < height; y++)
+        {
+            auto pixel_color = &mupdf_pixmap->samples[y * mupdf_pixmap->stride];
+            for(auto x = 0; x < width; x++)
+            {
+                if((255 != pixel_color[0]) || (255 != pixel_color[1]) || (255 != pixel_color[2]))
+                {
+                    return false;
+                }
+                pixel_color += mupdf_pixmap->n;
+            }
+        }
+
+        return true;
+    }
+}
+
 SCENARIO("Create Pixmap from page number", "[Pixmap]")
 {
     GIVEN("One page empty document")
@@ -52,7 +78,7 @@ SCENARIO("Create Pixmap from page number", "[Pixmap]")
     }
 }
 
-SCENARIO("Create Pixmap from empty page", "[Pixmap]")
+SCENARIO("Create empty Pixmap from empty page", "[Pixmap]")
 {
     GIVEN("One page empty document")
     {
@@ -72,31 +98,15 @@ SCENARIO("Create Pixmap from empty page", "[Pixmap]")
 
             THEN("Pixmap is empty")
             {
-                const auto height = pixmap.get_height();
-                const auto width = pixmap.get_width();
-
-                const auto mupdf_pixmap = pixmap.get();
-
-                for(auto y = 0; y < height; y++)
-                {
-                    auto pixel_color = &mupdf_pixmap->samples[y * mupdf_pixmap->stride];
-                    for(auto x = 0; x < width; x++)
-                    {
-                        REQUIRE(255 == pixel_color[0]);
-                        REQUIRE(255 == pixel_color[1]);
-                        REQUIRE(255 == pixel_color[2]);
-
-                        pixel_color += mupdf_pixmap->n;
-                    }
-                }
+                REQUIRE(is_pixmap_empty(pixmap));
             }
         }
     }
 }
 
-SCENARIO("Create Pixmap from not empty page", "[Pixmap]")
+SCENARIO("Create not empty Pixmap from not empty page", "[Pixmap]")
 {
-    GIVEN("One page empty document")
+    GIVEN("One page not empty document")
     {
         const auto context = std::make_shared<mupdf_wrapper::Context>();
         context->register_document_handlers();
@@ -114,27 +124,7 @@ SCENARIO("Create Pixmap from not empty page", "[Pixmap]")
 
             THEN("Pixmap is not empty")
             {
-                bool pixmap_empty = true;
-
-                const auto height = pixmap.get_height();
-                const auto width = pixmap.get_width();
-
-                const auto mupdf_pixmap = pixmap.get();
-
-                for(auto y = 0; y < height; y++)
-                {
-                    auto pixel_color = &mupdf_pixmap->samples[y * mupdf_pixmap->stride];
-                    for(auto x = 0; x < width; x++)
-                    {
-                        if((255 == pixel_color[0]) || (255 == pixel_color[1]) || (255 == pixel_color[2]))
-                        {
-                            pixmap_empty = false;
-                        }
-                        pixel_color += mupdf_pixmap->n;
-                    }
-                }
-
-                REQUIRE_FALSE(pixmap_empty);
+                REQUIRE_FALSE(is_pixmap_empty(pixmap));
             }
         }
     }
