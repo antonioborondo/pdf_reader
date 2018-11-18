@@ -25,7 +25,7 @@ namespace mupdf_wrapper
         }
     }
 
-    const fz_page* Page::get() const
+    fz_page* Page::get() const
     {
         return m_mupdf_page;
     }

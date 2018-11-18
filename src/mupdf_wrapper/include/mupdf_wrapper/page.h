@@ -20,7 +20,7 @@ namespace mupdf_wrapper
     public:
         Page(std::shared_ptr<Context> context, std::shared_ptr<Document> document, int page_number);
         ~Page();
-        const fz_page* get() const;
+        fz_page* get() const;
     };
 }
 
