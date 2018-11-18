@@ -3,6 +3,7 @@
 #include <mupdf_wrapper/context.h>
 #include <mupdf_wrapper/document.h>
 #include <mupdf_wrapper/matrix.h>
+#include <mupdf_wrapper/page.h>
 #include <mupdf_wrapper/pixmap.h>
 
 #include <memory>
