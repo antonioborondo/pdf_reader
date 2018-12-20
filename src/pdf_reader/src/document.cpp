@@ -62,7 +62,7 @@ namespace pdf_reader
             m_matrix->set_zoom(zoom);
             m_matrix->set_rotation(rotation);
 
-            m_pixmap = std::make_shared<mupdf_wrapper::Pixmap>(m_context, m_document, m_matrix, page);
+            m_pixmap = std::make_shared<mupdf_wrapper::Pixmap>(m_context, m_matrix, page);
             const auto samples = m_pixmap->get_samples();
             const auto width = m_pixmap->get_width();
             const auto height = m_pixmap->get_height();
