@@ -23,29 +23,16 @@ jobs:
           command: >
             export CFLAGS="-fPIC" &&
             cd lib/mupdf/ &&
-            make build=debug HAVE_X11=no HAVE_GLUT=no -j `nproc` libs &&
             make HAVE_X11=no HAVE_GLUT=no -j `nproc` libs
       - run:
-          name: Build debug
+          name: Build
           command: >
-            mkdir cmake_debug &&
-            cd cmake_debug &&
-            cmake -DCMAKE_BUILD_TYPE=Debug .. &&
-            make -j `nproc`
-      - run:
-          name: Test debug
-          command: >
-            cd cmake_debug &&
-            ctest -V
-      - run:
-          name: Build release
-          command: >
-            mkdir cmake_release &&
-            cd cmake_release &&
+            mkdir cmake &&
+            cd cmake &&
             cmake -DCMAKE_BUILD_TYPE=Release .. &&
             make -j `nproc`
       - run:
-          name: Test release
+          name: Test
           command: >
-            cd cmake_release &&
+            cd cmake &&
             ctest -V
