@@ -14,6 +14,7 @@ add_subdirectory(src/pdf_reader)
 
 enable_testing()
 
-set(TEST_FILES ${CMAKE_SOURCE_DIR}/resources/test_files)
+set(TEST_FILES_DIRECTORY ${CMAKE_SOURCE_DIR}/resources/test_files)
+file(COPY ${TEST_FILES_DIRECTORY} DESTINATION ${BINARY_DIRECTORY})
 
-add_test(NAME mupdf_wrapper_test COMMAND mupdf_wrapper_test WORKING_DIRECTORY ${TEST_FILES})
+add_test(NAME mupdf_wrapper_test COMMAND mupdf_wrapper_test WORKING_DIRECTORY ${BINARY_DIRECTORY})
