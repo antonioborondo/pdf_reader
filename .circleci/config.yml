@@ -12,22 +12,12 @@ jobs:
             apt-get -y dist-upgrade &&
             apt-get -y install git cmake build-essential qt5-default
       - run:
-          name: Update submodules
-          command: >
-            git submodule update --init --recursive
-      - run:
-          name: Build MuPDF library
-          command: >
-            export CFLAGS="-fPIC" &&
-            cd lib/MuPDF/ &&
-            make HAVE_X11=no HAVE_GLUT=no -j `nproc` libs
-      - run:
           name: Build
           command: >
             mkdir cmake &&
             cd cmake &&
             cmake -DCMAKE_BUILD_TYPE=Release .. &&
-            make -j `nproc`
+            cmake --build .
       - run:
           name: Test
           command: >
