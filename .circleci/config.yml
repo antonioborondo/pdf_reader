@@ -16,10 +16,10 @@ jobs:
           command: >
             git submodule update --init --recursive
       - run:
-          name: Build muPDF library
+          name: Build MuPDF library
           command: >
             export CFLAGS="-fPIC" &&
-            cd lib/mupdf/ &&
+            cd lib/MuPDF/ &&
             make HAVE_X11=no HAVE_GLUT=no -j `nproc` libs
       - run:
           name: Build
