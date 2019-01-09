@@ -14,9 +14,6 @@ jobs:
       - run:
           name: Update submodules
           command: >
-            mkdir -p ~/.ssh &&
-            touch ~/.ssh/known_hosts &&
-            ssh-keyscan github.com >> ~/.ssh/known_hosts &&
             git submodule update --init --recursive
       - run:
           name: Build muPDF library
