@@ -5,7 +5,7 @@
 
 ## Features
 - Open PDF documents.
-- Page navigation controls.
+- Page navigation.
 
 ## Prepare the repository
 Clone the repository and run the following command to initialize the submodules:
@@ -19,10 +19,10 @@ git submodule update --init --recursive
 ```
 pacman -S make mingw-w64-x86_64-gcc mingw-w64-x86_64-gdb mingw-w64-x86_64-qt-creator
 ```
-## Compile muPDF library
-Run the following commands to build muPDF:
+## Compile MuPDF library
+Run the following commands to build MuPDF:
 ```
-cd lib/mupdf/
+cd lib/MuPDF/
 make build=debug HAVE_X11=no HAVE_GLUT=no -j8 libs
 make HAVE_X11=no HAVE_GLUT=no -j8 libs
 ```
