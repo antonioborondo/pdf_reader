@@ -7,30 +7,27 @@
 - Open PDF documents.
 - Page navigation.
 
-## Prepare the repository
-Clone the repository and run the following command to initialize the submodules:
-```
-git submodule update --init --recursive
-```
-## Install the toolchain (MinGW 64-bit)
+## Windows (MinGW 64-bit)
 1. Install MSYS2: http://www.msys2.org
-1. Run "MSYS2 MinGW 64-bit" (mingw64.exe).
-1. Run the following command to install the toolchain:
-```
-pacman -S make mingw-w64-x86_64-gcc mingw-w64-x86_64-gdb mingw-w64-x86_64-qt-creator
-```
-## Compile MuPDF library
-Run the following commands to build MuPDF:
-```
-cd lib/MuPDF/
-make build=debug HAVE_X11=no HAVE_GLUT=no -j8 libs
-make HAVE_X11=no HAVE_GLUT=no -j8 libs
-```
-## Compile and test pdf_reader
-```
-mkdir pdf_reader_cmake/
-cd pdf_reader_cmake/
-cmake -G "MinGW Makefiles" -DCMAKE_SH=CMAKE_SH-NOTFOUND -DCMAKE_PREFIX_PATH=<MSYS2_INSTALLATION_PATH>/mingw64 -DCMAKE_C_COMPILER=<MSYS2_INSTALLATION_PATH>/mingw64/bin/cc.exe -DCMAKE_CXX_COMPILER=<MSYS2_INSTALLATION_PATH>/mingw64/bin/c++.exe ../pdf_reader
-cmake --build .
-ctest -V
-```
+1. Execute `mingw64.exe`
+1. Install the packages required:
+    ```
+    pacman -S git mingw-w64-x86_64-cmake make mingw-w64-x86_64-gcc mingw-w64-x86_64-qt5
+    ```
+1. Clone the repository:
+    ```
+    git clone git@github.com:antonioborondo/pdf_reader.git
+    ```
+1. Configure, build and test the project:
+    ```
+    mkdir pdf_reader_cmake/
+    cd pdf_reader_cmake/
+    cmake -G "MinGW Makefiles" -DCMAKE_SH=CMAKE_SH-NOTFOUND ../pdf_reader
+    cmake --build .
+    ctest -V
+    ```
+1. Start the application:
+    ```
+    cd bin
+    ./pdf_reader.exe
+    ```

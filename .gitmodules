@@ -1,3 +1,0 @@
-[submodule "lib/MuPDF"]
-    path = lib/MuPDF
-    url = git://git.ghostscript.com/mupdf.git
