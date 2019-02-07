@@ -9,16 +9,13 @@
 
 ## Windows (MinGW 64-bit)
 1. Install MSYS2: http://www.msys2.org
-1. Execute `mingw64.exe`
-1. Install the packages required:
+1. Run `mingw64.exe`
+1. Install packages:
     ```
-    pacman -S git mingw-w64-x86_64-cmake make mingw-w64-x86_64-gcc mingw-w64-x86_64-qt5
+    pacman -S git mingw-w64-x86_64-cmake make mingw-w64-x86_64-make mingw-w64-x86_64-gcc mingw-w64-x86_64-qt5
     ```
-1. Clone the repository:
-    ```
-    git clone git@github.com:antonioborondo/pdf_reader.git
-    ```
-1. Configure, build and test the project:
+1. Clone repository
+1. Configure, build and test project:
     ```
     mkdir pdf_reader_cmake/
     cd pdf_reader_cmake/
@@ -26,8 +23,8 @@
     cmake --build .
     ctest -V
     ```
-1. Start the application:
+1. Run application:
     ```
-    cd bin
+    cd bin/
     ./pdf_reader.exe
     ```
