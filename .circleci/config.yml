@@ -16,7 +16,7 @@ jobs:
           command: >
             mkdir cmake &&
             cd cmake &&
-            cmake -DCMAKE_BUILD_TYPE=Release .. &&
+            cmake ../ &&
             cmake --build .
       - run:
           name: Test
