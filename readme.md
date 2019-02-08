@@ -32,3 +32,28 @@
     cd bin/
     ./pdf_reader.exe
     ```
+
+## Linux (Ubuntu 18.04 LTS 64-bit)
+1. Install packages:
+    ```
+    sudo apt-get install git cmake g++ qt5-default
+    ```
+    NOTE: Recommended extra package for development:
+    ```
+    sudo apt-get install qtcreator
+    ```
+1. Clone repository
+1. Configure, build and test project:
+    ```
+    mkdir pdf_reader_cmake/
+    cd pdf_reader_cmake/
+    cmake ../pdf_reader
+    cmake --build .
+    ctest -V
+    ```
+1. Run application:
+    ```
+    cd bin/
+    ./pdf_reader
+    ```
+
