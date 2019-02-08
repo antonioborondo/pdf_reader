@@ -14,6 +14,10 @@
     ```
     pacman -S git mingw-w64-x86_64-cmake make mingw-w64-x86_64-make mingw-w64-x86_64-gcc mingw-w64-x86_64-qt5
     ```
+    NOTE: Recommended packages for development are the following:
+    ```
+    pacman -S git mingw-w64-x86_64-cmake make mingw-w64-x86_64-make mingw-w64-x86_64-gcc mingw-w64-x86_64-gdb mingw-w64-x86_64-qt-creator
+    ```
 1. Clone repository
 1. Configure, build and test project:
     ```
