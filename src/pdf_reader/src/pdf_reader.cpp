@@ -13,24 +13,17 @@ namespace pdf_reader
 {
     Pdf_reader::Pdf_reader(QWidget* parent)
         : QMainWindow(parent)
-        , m_ui(nullptr)
-        , m_label(nullptr)
+        , m_ui(std::make_unique<Ui::Pdf_reader>())
+        , m_document_area(std::make_unique<QLabel>())
     {
-        m_label = new QLabel();
-        m_label->setAlignment(Qt::AlignHCenter);
+        m_document_area->setAlignment(Qt::AlignHCenter);
 
-        m_ui = new Ui::Pdf_reader();
         m_ui->setupUi(this);
-        m_ui->scroll_area_content->layout()->addWidget(m_label);
+        m_ui->scroll_area_content->layout()->addWidget(m_document_area.get());
     }
 
     Pdf_reader::~Pdf_reader()
     {
-        delete m_ui;
-        m_ui = nullptr;
-
-        delete m_label;
-        m_label = nullptr;
     }
 
     void Pdf_reader::open_file(const std::string& filename)
@@ -49,8 +42,8 @@ namespace pdf_reader
     {
         if(nullptr != page)
         {
-            m_label->setPixmap(QPixmap::fromImage(*page));
-            m_label->resize(m_label->sizeHint());
+            m_document_area->setPixmap(QPixmap::fromImage(*page));
+            m_document_area->resize(m_document_area->sizeHint());
         }
     }
 
