@@ -20,8 +20,8 @@ namespace pdf_reader
     {
         Q_OBJECT
 
-        Ui::Pdf_reader* m_ui;
-        QLabel* m_label;
+        std::unique_ptr<Ui::Pdf_reader> m_ui;
+        std::unique_ptr<QLabel> m_document_area;
 
         std::unique_ptr<pdf_reader::Document> m_document;
 
