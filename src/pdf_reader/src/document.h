@@ -37,6 +37,8 @@ namespace pdf_reader
     public:
         Document(const std::string& filename);
         std::shared_ptr<QImage> get_page(Page page);
+
+    private:
         std::shared_ptr<QImage> get_page(int page_number);
     };
 }
