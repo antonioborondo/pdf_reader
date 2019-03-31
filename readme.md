@@ -4,11 +4,17 @@
 ![Screenshot](resources/screenshot.png?raw=true)
 
 ## Features
-- Open PDF documents.
-- Page navigation.
+- Cross-platform (Windows/Linux/MacOS) PDF reader.
+- GUI implemented with Qt: https://www.qt.io
+- GUI icons from elementary OS: https://github.com/elementary/icons
+- PDF rendering implemented with MuPDF: https://www.mupdf.com
+- MuPDF fully integrated in CMake as an external project.
+- MuPDF wrapped in a C++ library following the RAII technique.
+- BDD unit tests implemented with Catch2: https://github.com/catchorg/Catch2
+- CI implemented with CircleCI: https://www.circleci.com
 
 ## Windows (MinGW 64-bit)
-1. Install MSYS2: http://www.msys2.org
+1. Install MSYS2: https://www.msys2.org
 1. Run `mingw64.exe`
 1. Install packages:
     ```
