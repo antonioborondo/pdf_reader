@@ -1,10 +1,9 @@
-# pdf_reader
+# Cross-platform PDF reader
 [![Build Status](https://travis-ci.com/antonioborondo/pdf_reader.svg?branch=master)](https://travis-ci.com/antonioborondo/pdf_reader)
 
 ![Screenshot](resources/screenshot.png?raw=true)
 
 ## Features
-- Cross-platform (Windows/Linux/MacOS) PDF reader.
 - GUI implemented with Qt: https://www.qt.io
 - GUI icons from elementary OS: https://www.github.com/elementary/icons
 - PDF rendering implemented with MuPDF: https://www.mupdf.com
@@ -62,4 +61,3 @@
     cd bin/
     ./pdf_reader
     ```
-
