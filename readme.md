@@ -1,17 +1,17 @@
 # pdf_reader
-[![CircleCI](https://circleci.com/gh/antonioborondo/pdf_reader.svg?style=svg)](https://circleci.com/gh/antonioborondo/pdf_reader)
+[![Build Status](https://travis-ci.com/antonioborondo/pdf_reader.svg?branch=master)](https://travis-ci.com/antonioborondo/pdf_reader)
 
 ![Screenshot](resources/screenshot.png?raw=true)
 
 ## Features
 - Cross-platform (Windows/Linux/MacOS) PDF reader.
 - GUI implemented with Qt: https://www.qt.io
-- GUI icons from elementary OS: https://github.com/elementary/icons
+- GUI icons from elementary OS: https://www.github.com/elementary/icons
 - PDF rendering implemented with MuPDF: https://www.mupdf.com
 - MuPDF fully integrated in CMake as an external project.
 - MuPDF wrapped in a C++ library following the RAII technique.
-- BDD unit tests implemented with Catch2: https://github.com/catchorg/Catch2
-- CI implemented with CircleCI: https://www.circleci.com
+- BDD unit tests implemented with Catch2: https://www.github.com/catchorg/Catch2
+- CI implemented with Travis CI: https://www.travis-ci.com
 
 ## Windows (MinGW 64-bit)
 1. Install MSYS2: https://www.msys2.org

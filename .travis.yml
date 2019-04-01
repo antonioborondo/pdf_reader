@@ -1,0 +1,11 @@
+language: cpp
+
+dist: bionic
+
+before_install:
+ - sudo apt-get install qt5-default
+
+script:
+  - cmake .
+  - cmake --build .
+  - ctest -V
