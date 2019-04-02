@@ -3,7 +3,8 @@ language: cpp
 dist: bionic
 
 before_install:
- - sudo apt-get install qt5-default
+  - sudo apt-get update
+  - sudo apt-get install -y qt5-default
 
 script:
   - cmake .
