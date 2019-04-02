@@ -6,7 +6,11 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install -y qt5-default
 
+env:
+  - BUILD_CONFIGURATION=Release
+  - BUILD_CONFIGURATION=Debug
+
 script:
-  - cmake .
+  - cmake -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION .
   - cmake --build .
   - ctest -V
