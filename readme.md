@@ -1,7 +1,7 @@
 # Cross-platform PDF reader
 [![Build Status](https://travis-ci.com/antonioborondo/pdf_reader.svg?branch=master)](https://travis-ci.com/antonioborondo/pdf_reader)
 
-![Screenshot](resources/screenshot.png?raw=true)
+![Screenshot](screenshot.png?raw=true)
 
 ## Features
 - GUI implemented with Qt: https://www.qt.io

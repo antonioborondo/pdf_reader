@@ -13,4 +13,4 @@ env:
 script:
   - cmake -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION .
   - cmake --build .
-  - ctest -V
+  - ctest --verbose
