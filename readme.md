@@ -30,7 +30,7 @@
     cd pdf_reader_cmake/
     cmake -G "MinGW Makefiles" -DCMAKE_SH=CMAKE_SH-NOTFOUND ../pdf_reader
     cmake --build .
-    ctest -V
+    ctest --verbose
     ```
 1. Run application:
     ```
@@ -54,7 +54,7 @@
     cd pdf_reader_cmake/
     cmake ../pdf_reader
     cmake --build .
-    ctest -V
+    ctest --verbose
     ```
 1. Run application:
     ```
