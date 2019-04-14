@@ -3,17 +3,32 @@
 
 ![Screenshot](screenshot.png?raw=true)
 
-## Features
-- GUI implemented with Qt: https://www.qt.io
-- GUI icons from elementary OS: https://www.github.com/elementary/icons
-- PDF rendering implemented with MuPDF: https://www.mupdf.com
-- MuPDF fully integrated in CMake as an external project.
-- MuPDF wrapped in a C++ library following the RAII technique.
-- BDD unit tests implemented with Catch2: https://www.github.com/catchorg/Catch2
-- CI implemented with Travis CI: https://www.travis-ci.com
+## Description
+Cross-platform application to read PDF files.
 
-## Windows (MinGW 64-bit)
-1. Install MSYS2: https://www.msys2.org
+## Features
+- UI implemented with Qt.
+- PDF rendering implemented with MuPDF.
+- MuPDF fully integrated in CMake as an external project.
+- MuPDF wrapped in a C++ library using the RAII technique.
+- BDD unit tests implemented with Catch2.
+- CI implemented with Travis CI.
+
+## Libraries
+- Catch2: https://www.github.com/catchorg/Catch2
+- MuPDF: https://www.mupdf.com
+- Qt: https://www.qt.io
+
+## Tools
+- CMake: https://www.cmake.org
+- Travis CI: https://www.travis-ci.com
+
+## Resources
+- elementary OS icons: https://www.github.com/elementary/icons
+
+## How to build
+### Windows (MinGW 64-bit)
+1. Install MSYS2 x86_64: https://www.msys2.org
 1. Run `mingw64.exe`
 1. Install packages:
     ```
@@ -38,7 +53,7 @@
     ./pdf_reader.exe
     ```
 
-## Linux (Ubuntu 18.04 LTS 64-bit)
+### Linux (Ubuntu 18.04 LTS 64-bit)
 1. Install packages:
     ```
     sudo apt-get install git cmake g++ qt5-default
