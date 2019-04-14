@@ -4,7 +4,7 @@
 ![Screenshot](screenshot.png?raw=true)
 
 ## Description
-Cross-platform aplication to read PDF files.
+Cross-platform application to read PDF files.
 
 ## Features
 - UI implemented with Qt.
