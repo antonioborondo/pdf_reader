@@ -8,22 +8,22 @@ find_package(Qt5Core REQUIRED)
 find_package(Qt5Gui REQUIRED)
 find_package(Qt5Widgets REQUIRED)
 
-set(SOURCE_FILES_FOLDER src)
+set(SOURCE_FILES_DIRECTORY src)
 
 set(SOURCE_FILES
-    ${SOURCE_FILES_FOLDER}/document.h
-    ${SOURCE_FILES_FOLDER}/document.cpp
-    ${SOURCE_FILES_FOLDER}/main.cpp
-    ${SOURCE_FILES_FOLDER}/pdf_reader.cpp
-    ${SOURCE_FILES_FOLDER}/pdf_reader.h
+    ${SOURCE_FILES_DIRECTORY}/document.h
+    ${SOURCE_FILES_DIRECTORY}/document.cpp
+    ${SOURCE_FILES_DIRECTORY}/main.cpp
+    ${SOURCE_FILES_DIRECTORY}/pdf_reader.cpp
+    ${SOURCE_FILES_DIRECTORY}/pdf_reader.h
 )
 
 set(FORM_FILES
-    ${SOURCE_FILES_FOLDER}/pdf_reader.ui
+    ${SOURCE_FILES_DIRECTORY}/pdf_reader.ui
 )
 
 set(RESOURCE_FILES
-    ${SOURCE_FILES_FOLDER}/pdf_reader.qrc
+    ${SOURCE_FILES_DIRECTORY}/pdf_reader.qrc
 )
 
 add_executable(pdf_reader
