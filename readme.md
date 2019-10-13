@@ -53,10 +53,10 @@ Cross-platform application to read PDF files.
     ./pdf_reader.exe
     ```
 
-### Linux (Ubuntu 18.04 LTS 64-bit)
+### Linux (Ubuntu 18.04.3 LTS 64-bit)
 1. Install packages:
     ```
-    sudo apt install git cmake g++ qt5-default
+    sudo apt install build-essential cmake git qt5-default
     ```
     NOTE: Recommended extra package for development:
     ```
