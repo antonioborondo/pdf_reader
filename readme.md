@@ -56,11 +56,11 @@ Cross-platform application to read PDF files.
 ### Linux (Ubuntu 18.04 LTS 64-bit)
 1. Install packages:
     ```
-    sudo apt-get install git cmake g++ qt5-default
+    sudo apt install git cmake g++ qt5-default
     ```
     NOTE: Recommended extra package for development:
     ```
-    sudo apt-get install qtcreator
+    sudo apt install qtcreator
     ```
 1. Clone repository
 1. Configure, build and test project:
