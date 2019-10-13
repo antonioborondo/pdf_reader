@@ -3,8 +3,8 @@ language: cpp
 dist: bionic
 
 before_install:
-  - sudo apt-get update
-  - sudo apt-get install -y qt5-default
+  - sudo apt update
+  - sudo apt install -y qt5-default
 
 env:
   - BUILD_CONFIGURATION=Release
