@@ -2,13 +2,19 @@ language: cpp
 
 dist: bionic
 
-before_install:
-  - sudo apt update
-  - sudo apt install -y qt5-default
+addons:
+  apt:
+    packages:
+      - g++-8
+      - qt5-default
 
 env:
-  - BUILD_CONFIGURATION=Release
-  - BUILD_CONFIGURATION=Debug
+  global:
+    - CC=gcc-8
+    - CXX=g++-8
+  jobs:
+    - BUILD_CONFIGURATION=Release
+    - BUILD_CONFIGURATION=Debug
 
 script:
   - cmake -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION .

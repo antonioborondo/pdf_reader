@@ -1,8 +1,8 @@
 #ifndef PDF_READER_DOCUMENT_H
 #define PDF_READER_DOCUMENT_H
 
+#include <filesystem>
 #include <memory>
-#include <string>
 
 class QImage;
 
@@ -35,7 +35,7 @@ namespace pdf_reader
         int m_total_pages;
 
     public:
-        Document(const std::string& filename);
+        Document(const std::filesystem::path& filename);
         std::shared_ptr<QImage> get_page(Page page);
 
     private:

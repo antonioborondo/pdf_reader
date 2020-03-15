@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 
+#include <filesystem>
 #include <memory>
 
 class QLabel;
@@ -30,7 +31,7 @@ namespace pdf_reader
         ~Pdf_reader();
 
     private:
-        void open_file(const std::string& filename);
+        void open_file(const std::filesystem::path& filename);
         void show_page(std::shared_ptr<QImage> page);
 
     private slots:

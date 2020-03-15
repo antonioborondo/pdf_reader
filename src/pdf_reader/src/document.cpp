@@ -10,7 +10,7 @@
 
 namespace pdf_reader
 {
-    Document::Document(const std::string& filename)
+    Document::Document(const std::filesystem::path& filename)
         : m_page_number(0)
         , m_total_pages(0)
     {
