@@ -91,3 +91,5 @@ target_link_libraries(mupdf_wrapper_test
     mupdf_wrapper
     catch2
 )
+
+add_test(NAME mupdf_wrapper_test COMMAND mupdf_wrapper_test --tfd ${CMAKE_SOURCE_DIR}/test_files)

@@ -26,7 +26,7 @@ namespace pdf_reader
     {
     }
 
-    void Pdf_reader::open_file(const std::string& filename)
+    void Pdf_reader::open_file(const std::filesystem::path& filename)
     {
         try
         {
@@ -53,7 +53,7 @@ namespace pdf_reader
 
         if(!filename.isEmpty())
         {
-            open_file(filename.toStdString());
+            open_file(std::filesystem::path{filename.toStdString()});
             if(nullptr != m_document)
             {
                 show_page(m_document->get_page(Page::first));
