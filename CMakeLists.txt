@@ -11,18 +11,23 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BINARY_DIRECTORY})
 
 enable_testing()
 
-##### Catch2 library #####
-set(CATCH2_LIBRARY ${CMAKE_CURRENT_BINARY_DIR}/lib/catch2/include/catch2/catch.hpp)
+##### Conan #####
+set(CONAN_CMAKE ${CMAKE_BINARY_DIR}/conan.cmake)
 
-if(NOT EXISTS ${CATCH2_LIBRARY})
-    message(STATUS "Downloading Catch2 from https://github.com/catchorg/Catch2")
-    file(DOWNLOAD "https://raw.githubusercontent.com/catchorg/Catch2/master/single_include/catch2/catch.hpp" ${CATCH2_LIBRARY})
+if(NOT EXISTS ${CONAN_CMAKE})
+    message(STATUS "Downloading conan.cmake from https://github.com/conan-io/cmake-conan")
+    file(DOWNLOAD "https://raw.githubusercontent.com/conan-io/cmake-conan/develop/conan.cmake" ${CONAN_CMAKE})
 endif()
 
-add_library(catch2 INTERFACE)
+include(${CONAN_CMAKE})
 
-target_include_directories(catch2 INTERFACE ${CMAKE_CURRENT_BINARY_DIR}/lib/catch2/include)
-##### Catch2 library #####
+conan_cmake_run(
+    REQUIRES
+    Catch2/2.11.3@catchorg/stable
+    BASIC_SETUP CMAKE_TARGETS
+    BUILD missing
+)
+##### Conan #####
 
 add_subdirectory(src/mupdf_wrapper)
 add_subdirectory(src/pdf_reader)
