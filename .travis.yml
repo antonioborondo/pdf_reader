@@ -8,6 +8,12 @@ addons:
       - g++-8
       - qt5-default
 
+install:
+  - pip install conan
+  - conan remote add catchorg https://api.bintray.com/conan/catchorg/Catch2
+  - conan profile new default --detect
+  - conan profile update settings.compiler.libcxx=libstdc++11 default
+
 env:
   global:
     - CC=gcc-8
