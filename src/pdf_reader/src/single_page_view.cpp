@@ -3,7 +3,7 @@
 namespace pdf_reader
 {
     Single_page_view::Single_page_view(QLayout& layout)
-        : m_current_page_number{}
+        : m_page_number{}
     {
         layout.addWidget(&m_page);
 
@@ -20,10 +20,10 @@ namespace pdf_reader
                 page_number = 0;
                 break;
             case Page_position::previous:
-                page_number = m_current_page_number - 1;
+                page_number = m_page_number - 1;
                 break;
             case Page_position::next:
-                page_number = m_current_page_number + 1;
+                page_number = m_page_number + 1;
                 break;
             case Page_position::last:
                 page_number = document.get_total_pages() - 1;
@@ -36,7 +36,7 @@ namespace pdf_reader
         {
             m_page.setPixmap(QPixmap::fromImage(*page_image));
 
-            m_current_page_number = page_number;
+            m_page_number = page_number;
         }
     }
 }

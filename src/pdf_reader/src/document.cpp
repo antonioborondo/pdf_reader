@@ -11,8 +11,7 @@
 namespace pdf_reader
 {
     Document::Document(const std::filesystem::path& filename)
-        : m_page_number(0)
-        , m_total_pages(0)
+        : m_total_pages{}
     {
         m_context = std::make_shared<mupdf_wrapper::Context>();
         m_context->register_document_handlers();
@@ -28,12 +27,10 @@ namespace pdf_reader
 
         if((0 <= page_number) && (m_total_pages > page_number))
         {
-            m_page_number = page_number;
-
             const unsigned int zoom = 100;
             const float rotation = 0;
 
-            const auto page = std::make_shared<mupdf_wrapper::Page>(m_context, m_document, m_page_number);
+            const auto page = std::make_shared<mupdf_wrapper::Page>(m_context, m_document, page_number);
 
             m_matrix = std::make_shared<mupdf_wrapper::Matrix>();
             m_matrix->set_zoom(zoom);

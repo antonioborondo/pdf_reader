@@ -23,7 +23,6 @@ namespace pdf_reader
         std::shared_ptr<mupdf_wrapper::Matrix> m_matrix;
         std::shared_ptr<mupdf_wrapper::Pixmap> m_pixmap;
 
-        int m_page_number;
         int m_total_pages;
 
     public:

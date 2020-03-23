@@ -20,9 +20,9 @@ namespace pdf_reader
 
     class Single_page_view
     {
-        int m_current_page_number;
-
         QLabel m_page;
+
+        int m_page_number;
 
     public:
         Single_page_view(QLayout& layout);
