@@ -16,14 +16,6 @@ namespace mupdf_wrapper
 
 namespace pdf_reader
 {
-    enum class Page
-    {
-        first,
-        previous,
-        next,
-        last
-    };
-
     class Document
     {
         std::shared_ptr<mupdf_wrapper::Context> m_context;
@@ -36,10 +28,10 @@ namespace pdf_reader
 
     public:
         Document(const std::filesystem::path& filename);
-        std::shared_ptr<QImage> get_page(Page page);
 
-    private:
         std::shared_ptr<QImage> get_page(int page_number);
+
+        int get_total_pages() const;
     };
 }
 

@@ -22,29 +22,6 @@ namespace pdf_reader
         m_total_pages = m_document->get_total_pages();
     }
 
-    std::shared_ptr<QImage> Document::get_page(Page page)
-    {
-        auto page_number = 0;
-
-        switch(page)
-        {
-            case Page::first:
-                page_number = 0;
-                break;
-            case Page::previous:
-                page_number = m_page_number - 1;
-                break;
-            case Page::next:
-                page_number = m_page_number + 1;
-                break;
-            case Page::last:
-                page_number = m_total_pages - 1;
-                break;
-        }
-
-        return get_page(page_number);
-    }
-
     std::shared_ptr<QImage> Document::get_page(int page_number)
     {
         std::shared_ptr<QImage> page_image = nullptr;
@@ -71,5 +48,10 @@ namespace pdf_reader
         }
 
         return page_image;
+    }
+
+    int Document::get_total_pages() const
+    {
+        return m_total_pages;
     }
 }

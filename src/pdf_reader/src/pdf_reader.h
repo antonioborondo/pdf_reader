@@ -24,7 +24,7 @@ namespace pdf_reader
 
         std::unique_ptr<Ui::Pdf_reader> m_ui;
 
-        std::shared_ptr<pdf_reader::Document> m_document;
+        std::unique_ptr<pdf_reader::Document> m_document;
         std::unique_ptr<pdf_reader::Single_page_view> m_single_page_view;
 
     public:

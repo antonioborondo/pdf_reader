@@ -28,7 +28,7 @@ namespace pdf_reader
     {
         try
         {
-            m_document = std::make_shared<pdf_reader::Document>(filename);
+            m_document = std::make_unique<pdf_reader::Document>(filename);
         }
         catch(const std::exception& e)
         {
@@ -45,7 +45,7 @@ namespace pdf_reader
             open_file(std::filesystem::path{filename.toStdString()});
             if(nullptr != m_document)
             {
-                m_single_page_view->show_page(m_document->get_page(Page::first));
+                m_single_page_view->show_page(*m_document, Page_position::first);
             }
         }
     }
@@ -54,7 +54,7 @@ namespace pdf_reader
     {
         if(nullptr != m_document)
         {
-            m_single_page_view->show_page(m_document->get_page(Page::first));
+            m_single_page_view->show_page(*m_document, Page_position::first);
         }
     }
 
@@ -62,7 +62,7 @@ namespace pdf_reader
     {
         if(nullptr != m_document)
         {
-            m_single_page_view->show_page(m_document->get_page(Page::previous));
+            m_single_page_view->show_page(*m_document, Page_position::previous);
         }
     }
 
@@ -70,7 +70,7 @@ namespace pdf_reader
     {
         if(nullptr != m_document)
         {
-            m_single_page_view->show_page(m_document->get_page(Page::next));
+            m_single_page_view->show_page(*m_document, Page_position::next);
         }
     }
 
@@ -78,7 +78,7 @@ namespace pdf_reader
     {
         if(nullptr != m_document)
         {
-            m_single_page_view->show_page(m_document->get_page(Page::last));
+            m_single_page_view->show_page(*m_document, Page_position::last);
         }
     }
 }
