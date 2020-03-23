@@ -13,7 +13,7 @@ namespace pdf_reader
         QLabel m_page;
 
     public:
-        Single_page_view(QLayout* layout);
+        Single_page_view(QLayout& layout);
 
         void show_page(std::shared_ptr<QImage> page_image);
     };

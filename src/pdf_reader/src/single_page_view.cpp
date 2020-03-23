@@ -2,12 +2,11 @@
 
 namespace pdf_reader
 {
-    Single_page_view::Single_page_view(QLayout* layout)
+    Single_page_view::Single_page_view(QLayout& layout)
     {
-        m_page.setAlignment(Qt::AlignHCenter);
-        m_page.resize(m_page.sizeHint());
+        layout.addWidget(&m_page);
 
-        layout->addWidget(&m_page);
+        m_page.setAlignment(Qt::AlignHCenter);
     }
 
     void Single_page_view::show_page(std::shared_ptr<QImage> page_image)

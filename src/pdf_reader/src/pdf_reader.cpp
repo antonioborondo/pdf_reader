@@ -17,7 +17,7 @@ namespace pdf_reader
         , m_ui(std::make_unique<Ui::Pdf_reader>())
     {
         m_ui->setupUi(this);
-        m_single_page_view = std::make_unique<pdf_reader::Single_page_view>(m_ui->scroll_area_content->layout());
+        m_single_page_view = std::make_unique<pdf_reader::Single_page_view>(*(m_ui->scroll_area_content->layout()));
     }
 
     Pdf_reader::~Pdf_reader()
