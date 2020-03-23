@@ -1,6 +1,7 @@
 #include "pdf_reader.h"
 
 #include "document.h"
+#include "single_page_view.h"
 #include "ui_pdf_reader.h"
 
 #include <QFileDialog>
@@ -14,12 +15,9 @@ namespace pdf_reader
     Pdf_reader::Pdf_reader(QWidget* parent)
         : QMainWindow(parent)
         , m_ui(std::make_unique<Ui::Pdf_reader>())
-        , m_document_area(std::make_unique<QLabel>())
     {
-        m_document_area->setAlignment(Qt::AlignHCenter);
-
         m_ui->setupUi(this);
-        m_ui->scroll_area_content->layout()->addWidget(m_document_area.get());
+        m_single_page_view = std::make_unique<pdf_reader::Single_page_view>(m_ui->scroll_area_content->layout());
     }
 
     Pdf_reader::~Pdf_reader()
@@ -30,20 +28,11 @@ namespace pdf_reader
     {
         try
         {
-            m_document = std::make_unique<pdf_reader::Document>(filename);
+            m_document = std::make_shared<pdf_reader::Document>(filename);
         }
         catch(const std::exception& e)
         {
             std::cout << "Exception: " << e.what() << std::endl;
-        }
-    }
-
-    void Pdf_reader::show_page(std::shared_ptr<QImage> page)
-    {
-        if(nullptr != page)
-        {
-            m_document_area->setPixmap(QPixmap::fromImage(*page));
-            m_document_area->resize(m_document_area->sizeHint());
         }
     }
 
@@ -56,7 +45,7 @@ namespace pdf_reader
             open_file(std::filesystem::path{filename.toStdString()});
             if(nullptr != m_document)
             {
-                show_page(m_document->get_page(Page::first));
+                m_single_page_view->show_page(m_document->get_page(Page::first));
             }
         }
     }
@@ -65,7 +54,7 @@ namespace pdf_reader
     {
         if(nullptr != m_document)
         {
-            show_page(m_document->get_page(Page::first));
+            m_single_page_view->show_page(m_document->get_page(Page::first));
         }
     }
 
@@ -73,7 +62,7 @@ namespace pdf_reader
     {
         if(nullptr != m_document)
         {
-            show_page(m_document->get_page(Page::previous));
+            m_single_page_view->show_page(m_document->get_page(Page::previous));
         }
     }
 
@@ -81,7 +70,7 @@ namespace pdf_reader
     {
         if(nullptr != m_document)
         {
-            show_page(m_document->get_page(Page::next));
+            m_single_page_view->show_page(m_document->get_page(Page::next));
         }
     }
 
@@ -89,7 +78,7 @@ namespace pdf_reader
     {
         if(nullptr != m_document)
         {
-            show_page(m_document->get_page(Page::last));
+            m_single_page_view->show_page(m_document->get_page(Page::last));
         }
     }
 }

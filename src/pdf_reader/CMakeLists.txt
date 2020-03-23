@@ -16,6 +16,8 @@ set(SOURCE_FILES
     ${SOURCE_FILES_DIRECTORY}/main.cpp
     ${SOURCE_FILES_DIRECTORY}/pdf_reader.cpp
     ${SOURCE_FILES_DIRECTORY}/pdf_reader.h
+    ${SOURCE_FILES_DIRECTORY}/single_page_view.h
+    ${SOURCE_FILES_DIRECTORY}/single_page_view.cpp
 )
 
 set(FORM_FILES
