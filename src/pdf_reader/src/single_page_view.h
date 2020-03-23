@@ -21,12 +21,10 @@ namespace pdf_reader
     class Single_page_view
     {
         QLabel m_page;
-
         int m_page_number;
 
     public:
         Single_page_view(QLayout& layout);
-
         void show_page(Document& document, Page_position page_position);
     };
 }

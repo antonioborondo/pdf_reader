@@ -34,7 +34,7 @@ namespace pdf_reader
         {
             const auto page = std::make_shared<mupdf_wrapper::Page>(m_context, m_document, page_number);
 
-            m_pixmap = std::make_shared<mupdf_wrapper::Pixmap>(m_context, m_matrix, page);
+            m_pixmap = std::make_shared<mupdf_wrapper::Pixmap>(m_context, m_matrix, page); // We need to store Pixmap object as member variable otherwise it does not survive
             const auto samples = m_pixmap->get_samples();
             const auto width = m_pixmap->get_width();
             const auto height = m_pixmap->get_height();

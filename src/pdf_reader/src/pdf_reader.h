@@ -23,9 +23,8 @@ namespace pdf_reader
         Q_OBJECT
 
         std::unique_ptr<Ui::Pdf_reader> m_ui;
-
-        std::unique_ptr<pdf_reader::Document> m_document;
-        std::unique_ptr<pdf_reader::Single_page_view> m_single_page_view;
+        std::unique_ptr<Document> m_document;
+        std::unique_ptr<Single_page_view> m_single_page_view;
 
     public:
         explicit Pdf_reader(QWidget* parent = nullptr);
