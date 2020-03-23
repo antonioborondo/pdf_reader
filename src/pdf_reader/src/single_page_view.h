@@ -1,8 +1,6 @@
 #ifndef PDF_READER_SINGLE_PAGE_VIEW_H
 #define PDF_READER_SINGLE_PAGE_VIEW_H
 
-#include "document.h"
-
 #include <QLabel>
 #include <QLayout>
 
@@ -12,7 +10,7 @@ namespace pdf_reader
 {
     class Single_page_view
     {
-        std::unique_ptr<QLabel> m_page;
+        QLabel m_page;
 
     public:
         Single_page_view(QLayout* layout);
