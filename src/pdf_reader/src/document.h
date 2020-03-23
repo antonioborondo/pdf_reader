@@ -3,6 +3,7 @@
 
 #include <filesystem>
 #include <memory>
+#include <optional>
 
 class QImage;
 
@@ -29,6 +30,8 @@ namespace pdf_reader
         Document(const std::filesystem::path& filename);
 
         std::shared_ptr<QImage> get_page(int page_number);
+
+        std::optional<QImage> get_page_image(int page_number);
 
         int get_total_pages() const;
     };

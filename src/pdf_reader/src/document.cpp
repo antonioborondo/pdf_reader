@@ -47,6 +47,16 @@ namespace pdf_reader
         return page_image;
     }
 
+    std::optional<QImage> Document::get_page_image(int page_number)
+    {
+        auto page_image = get_page(page_number);
+        if(nullptr != page_image)
+        {
+            return *page_image;
+        }
+        return {};
+    }
+
     int Document::get_total_pages() const
     {
         return m_total_pages;

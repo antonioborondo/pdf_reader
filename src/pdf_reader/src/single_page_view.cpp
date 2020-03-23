@@ -30,9 +30,7 @@ namespace pdf_reader
                 break;
         }
 
-        auto page_image = document.get_page(page_number);
-
-        if(nullptr != page_image)
+        if(const auto page_image = document.get_page_image(page_number))
         {
             m_page.setPixmap(QPixmap::fromImage(*page_image));
 
