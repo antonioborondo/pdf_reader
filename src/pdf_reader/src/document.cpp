@@ -34,12 +34,12 @@ namespace pdf_reader
         {
             const auto page = std::make_shared<mupdf_wrapper::Page>(m_context, m_document, page_number);
 
-            m_pixmap = std::make_shared<mupdf_wrapper::Pixmap>(m_context, m_matrix, page); // We need to store Pixmap object as member variable otherwise it does not survive
-            const auto samples = m_pixmap->get_samples();
-            const auto width = m_pixmap->get_width();
-            const auto height = m_pixmap->get_height();
+            const mupdf_wrapper::Pixmap pixmap{m_context, m_matrix, page};
+            const auto data = pixmap.get_samples();
+            const auto width = pixmap.get_width();
+            const auto height = pixmap.get_height();
 
-            return QImage{samples, width, height, QImage::Format_RGB888, nullptr, samples};
+            return QImage{data, width, height, QImage::Format_RGB888}.copy(); // copy() is needed to perform a deep copy of data
         }
         return {};
     }
