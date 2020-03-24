@@ -20,9 +20,8 @@ namespace pdf_reader
 
         m_total_pages = m_document->get_total_pages();
 
-        const unsigned int zoom = 100;
-        const float rotation = 0;
-
+        const unsigned int zoom{100};
+        const float rotation{0};
         m_matrix = std::make_shared<mupdf_wrapper::Matrix>();
         m_matrix->set_zoom(zoom);
         m_matrix->set_rotation(rotation);
