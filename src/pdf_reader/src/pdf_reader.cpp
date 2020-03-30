@@ -21,7 +21,7 @@ namespace pdf_reader
     {
         m_ui->setupUi(this);
         //m_single_page_view->bind_layout(*(m_ui->scroll_area_content->layout()));
-        m_multiple_page_view->bind_layout(*(m_ui->scroll_area_content->layout()));
+        //m_multiple_page_view->bind_layout(*(m_ui->scroll_area_content->layout()));
     }
 
     Pdf_reader::~Pdf_reader()
@@ -53,6 +53,7 @@ namespace pdf_reader
             {
                 //m_single_page_view->show_page(*m_document, Page_position::first);
                 m_multiple_page_view->show_pages(*m_document);
+                m_multiple_page_view->bind_layout(*(m_ui->scroll_area_content->layout()));
             }
         }
     }

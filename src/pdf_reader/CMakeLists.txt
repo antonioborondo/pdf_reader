@@ -47,6 +47,6 @@ target_link_libraries(pdf_reader
     Qt5::Core
     Qt5::Gui
     Qt5::Widgets
-    CONAN_PKG::boost
+    #CONAN_PKG::boost
     stdc++fs
 )
