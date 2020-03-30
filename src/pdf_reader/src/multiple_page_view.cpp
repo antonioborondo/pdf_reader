@@ -12,6 +12,22 @@ namespace pdf_reader
         remove_pages();
     }
 
+    void Multiple_page_view::show()
+    {
+        for(auto& page : m_pages)
+        {
+            m_layout.addWidget(&page);
+        }
+    }
+
+    void Multiple_page_view::hide()
+    {
+        for(auto& page : m_pages)
+        {
+            m_layout.removeWidget(&page);
+        }
+    }
+
     void Multiple_page_view::add_pages(Document& document)
     {
         remove_pages();
@@ -30,20 +46,10 @@ namespace pdf_reader
                 m_pages.push_back(page);
             }
         }
-
-        for(auto& page : m_pages)
-        {
-            m_layout.addWidget(&page);
-        }
     }
 
     void Multiple_page_view::remove_pages()
     {
-        for(auto& page : m_pages)
-        {
-            m_layout.removeWidget(&page);
-        }
-
         m_pages.clear();
     }
 }

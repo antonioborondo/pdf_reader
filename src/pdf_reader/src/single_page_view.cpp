@@ -2,20 +2,23 @@
 
 namespace pdf_reader
 {
-    Single_page_view::Single_page_view()
-        : m_page_number{}
+    Single_page_view::Single_page_view(QLayout &layout)
+        : m_layout(layout)
+        , m_page_number{}
     {
+        constexpr int margin{5};
+        m_page.setMargin(margin);
         m_page.setAlignment(Qt::AlignHCenter);
     }
 
-    void Single_page_view::bind_layout(QLayout& layout)
+    void Single_page_view::show()
     {
-        layout.addWidget(&m_page);
+        m_layout.addWidget(&m_page);
     }
 
-    void Single_page_view::unbind_layout(QLayout& layout)
+    void Single_page_view::hide()
     {
-        layout.removeWidget(&m_page);
+        m_layout.removeWidget(&m_page);
     }
 
     void Single_page_view::show_page(Document& document, Page_position page_position)

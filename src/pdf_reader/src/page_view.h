@@ -8,8 +8,9 @@ namespace pdf_reader
     class Page_view
     {
     public:
-        //virtual void bind_layout(QLayout& layout) = 0;
-        //virtual void unbind_layout(QLayout& layout) = 0;
+        //virtual ~Page_view();
+        virtual void show() = 0;
+        virtual void hide() = 0;
     };
 }
 

@@ -18,6 +18,10 @@ namespace pdf_reader
     public:
         Multiple_page_view(QLayout& layout);
         ~Multiple_page_view();
+
+        void show() override;
+        void hide() override;
+
         void add_pages(Document& document);
         void remove_pages();
 
