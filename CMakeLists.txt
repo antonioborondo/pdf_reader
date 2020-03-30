@@ -23,7 +23,7 @@ include(${CONAN_CMAKE})
 
 conan_cmake_run(
     REQUIRES
-    boost/1.69.0@conan/stable
+    boost/1.71.0@conan/stable
     Catch2/2.11.3@catchorg/stable
     BASIC_SETUP CMAKE_TARGETS
     BUILD missing
