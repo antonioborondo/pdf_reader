@@ -14,6 +14,9 @@ set(SOURCE_FILES
     ${SOURCE_FILES_DIRECTORY}/document.h
     ${SOURCE_FILES_DIRECTORY}/document.cpp
     ${SOURCE_FILES_DIRECTORY}/main.cpp
+    ${SOURCE_FILES_DIRECTORY}/multiple_page_view.h
+    ${SOURCE_FILES_DIRECTORY}/multiple_page_view.cpp
+    ${SOURCE_FILES_DIRECTORY}/page_view.h
     ${SOURCE_FILES_DIRECTORY}/pdf_reader.cpp
     ${SOURCE_FILES_DIRECTORY}/pdf_reader.h
     ${SOURCE_FILES_DIRECTORY}/single_page_view.h
@@ -44,5 +47,6 @@ target_link_libraries(pdf_reader
     Qt5::Core
     Qt5::Gui
     Qt5::Widgets
+    CONAN_PKG::boost
     stdc++fs
 )

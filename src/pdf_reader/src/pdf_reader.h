@@ -16,6 +16,7 @@ namespace Ui
 namespace pdf_reader
 {
     class Document;
+    class Multiple_page_view;
     class Single_page_view;
 
     class Pdf_reader : public QMainWindow
@@ -24,6 +25,7 @@ namespace pdf_reader
 
         std::unique_ptr<Ui::Pdf_reader> m_ui;
         std::unique_ptr<Document> m_document;
+        std::unique_ptr<Multiple_page_view> m_multiple_page_view;
         std::unique_ptr<Single_page_view> m_single_page_view;
 
     public:

@@ -2,6 +2,7 @@
 #define PDF_READER_SINGLE_PAGE_VIEW_H
 
 #include "document.h"
+#include "page_view.h"
 
 #include <QLabel>
 #include <QLayout>
@@ -18,13 +19,15 @@ namespace pdf_reader
         last
     };
 
-    class Single_page_view
+    class Single_page_view : Page_view
     {
         QLabel m_page;
         int m_page_number;
 
     public:
-        Single_page_view(QLayout& layout);
+        Single_page_view();
+        void bind_layout(QLayout &layout) override;
+        void unbind_layout(QLayout &layout) override;
         void show_page(Document& document, Page_position page_position);
     };
 }
