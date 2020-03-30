@@ -47,7 +47,7 @@
          <x>0</x>
          <y>0</y>
          <width>800</width>
-         <height>508</height>
+         <height>502</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="scroll_area_content_layout">
@@ -78,7 +78,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_file">
@@ -87,7 +87,15 @@
     </property>
     <addaction name="action_open_file"/>
    </widget>
+   <widget class="QMenu" name="menu_view">
+    <property name="title">
+     <string>View</string>
+    </property>
+    <addaction name="action_single_page"/>
+    <addaction name="action_multi_page"/>
+   </widget>
    <addaction name="menu_file"/>
+   <addaction name="menu_view"/>
   </widget>
   <widget class="QToolBar" name="main_tool_bar">
    <property name="movable">
@@ -150,6 +158,25 @@
    </property>
    <property name="text">
     <string>Last page</string>
+   </property>
+  </action>
+  <action name="action_single_page">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Single page</string>
+   </property>
+  </action>
+  <action name="action_multi_page">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Multi page</string>
    </property>
   </action>
  </widget>

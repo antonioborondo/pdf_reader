@@ -26,8 +26,8 @@ namespace pdf_reader
 
     public:
         Single_page_view();
-        void bind_layout(QLayout &layout) override;
-        void unbind_layout(QLayout &layout) override;
+        void bind_layout(QLayout &layout);
+        void unbind_layout(QLayout &layout);
         void show_page(Document& document, Page_position page_position);
     };
 }

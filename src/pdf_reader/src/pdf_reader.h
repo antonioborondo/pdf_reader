@@ -37,6 +37,8 @@ namespace pdf_reader
 
     private slots:
         void on_action_open_file_triggered();
+        void on_action_single_page_triggered();
+        void on_action_multi_page_triggered();
         void on_action_first_page_triggered();
         void on_action_previous_page_triggered();
         void on_action_next_page_triggered();

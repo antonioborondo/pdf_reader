@@ -4,22 +4,29 @@
 #include "document.h"
 #include "page_view.h"
 
+#include <boost/ptr_container/ptr_vector.hpp>
 #include <QLabel>
 #include <QLayout>
-
-//#include <boost/ptr_container/ptr_vector.hpp>
 
 namespace pdf_reader
 {
     class Multiple_page_view : Page_view
     {
-        std::vector<QLabel*> m_pages;
+        QLayout& m_layout;
+        boost::ptr_vector<QLabel> m_pages;
 
     public:
-        Multiple_page_view();
-        void bind_layout(QLayout& layout) override;
-        void unbind_layout(QLayout& layout) override;
+        Multiple_page_view(QLayout& layout);
+        ~Multiple_page_view();
+        void add_pages(Document& document);
+        void remove_pages();
+
         void show_pages(Document& document);
+
+
+
+        void add_pages_to_layout();
+        void remove_pages_from_layout();
     };
 }
 

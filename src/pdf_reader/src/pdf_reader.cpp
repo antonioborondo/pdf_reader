@@ -16,18 +16,17 @@ namespace pdf_reader
     Pdf_reader::Pdf_reader(QWidget* parent)
         : QMainWindow(parent)
         , m_ui(std::make_unique<Ui::Pdf_reader>())
-        , m_multiple_page_view{std::make_unique<Multiple_page_view>()}
         , m_single_page_view{std::make_unique<Single_page_view>()}
     {
+
         m_ui->setupUi(this);
+
+        m_multiple_page_view = std::make_unique<Multiple_page_view>(*(m_ui->scroll_area_content->layout()));
         //m_single_page_view->bind_layout(*(m_ui->scroll_area_content->layout()));
-        //m_multiple_page_view->bind_layout(*(m_ui->scroll_area_content->layout()));
     }
 
     Pdf_reader::~Pdf_reader()
     {
-        //m_single_page_view->unbind_layout(*(m_ui->scroll_area_content->layout()));
-        m_multiple_page_view->unbind_layout(*(m_ui->scroll_area_content->layout()));
     }
 
     void Pdf_reader::open_file(const std::filesystem::path& filename)
@@ -52,8 +51,7 @@ namespace pdf_reader
             if(nullptr != m_document)
             {
                 //m_single_page_view->show_page(*m_document, Page_position::first);
-                m_multiple_page_view->show_pages(*m_document);
-                m_multiple_page_view->bind_layout(*(m_ui->scroll_area_content->layout()));
+                m_multiple_page_view->add_pages(*m_document);
             }
         }
     }
@@ -64,6 +62,26 @@ namespace pdf_reader
         {
             m_single_page_view->show_page(*m_document, Page_position::first);
         }
+    }
+
+    void Pdf_reader::on_action_single_page_triggered()
+    {
+        m_ui->action_single_page->setChecked(true);
+        m_ui->action_multi_page->setChecked(false);
+        m_ui->action_first_page->setEnabled(true);
+        m_ui->action_previous_page->setEnabled(true);
+        m_ui->action_next_page->setEnabled(true);
+        m_ui->action_last_page->setEnabled(true);
+    }
+
+    void Pdf_reader::on_action_multi_page_triggered()
+    {
+        m_ui->action_single_page->setChecked(false);
+        m_ui->action_multi_page->setChecked(true);
+        m_ui->action_first_page->setEnabled(false);
+        m_ui->action_previous_page->setEnabled(false);
+        m_ui->action_next_page->setEnabled(false);
+        m_ui->action_last_page->setEnabled(false);
     }
 
     void Pdf_reader::on_action_previous_page_triggered()
