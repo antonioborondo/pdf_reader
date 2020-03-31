@@ -7,6 +7,7 @@ namespace pdf_reader
 {
     class Page_view
     {
+
     public:
         //virtual ~Page_view();
         virtual void show() = 0;

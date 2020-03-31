@@ -17,6 +17,7 @@ namespace pdf_reader
         for(auto& page : m_pages)
         {
             m_layout.addWidget(&page);
+            page.show();
         }
     }
 
@@ -24,7 +25,8 @@ namespace pdf_reader
     {
         for(auto& page : m_pages)
         {
-            m_layout.removeWidget(&page);
+            //m_layout.removeWidget(&page);
+            page.hide();
         }
     }
 

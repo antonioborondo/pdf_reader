@@ -14,11 +14,13 @@ namespace pdf_reader
     void Single_page_view::show()
     {
         m_layout.addWidget(&m_page);
+        m_page.show();
     }
 
     void Single_page_view::hide()
     {
-        m_layout.removeWidget(&m_page);
+        m_page.hide();
+        //m_layout.removeWidget(&m_page);
     }
 
     void Single_page_view::show_page(Document& document, Page_position page_position)
