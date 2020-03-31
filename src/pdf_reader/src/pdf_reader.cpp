@@ -51,6 +51,15 @@ namespace pdf_reader
             {
                 m_single_page_view->show_page(*m_document, Page_position::first);
                 m_multiple_page_view->add_pages(*m_document);
+
+                if(m_ui->action_single_page->isChecked())
+                {
+                    m_single_page_view->show();
+                }
+                else
+                {
+                    m_multiple_page_view->show();
+                }
             }
         }
     }
