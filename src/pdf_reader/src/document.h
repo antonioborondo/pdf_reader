@@ -1,6 +1,9 @@
 #ifndef PDF_READER_DOCUMENT_H
 #define PDF_READER_DOCUMENT_H
 
+#include "mupdf_wrapper/context.h"
+#include "mupdf_wrapper/matrix.h"
+
 #include <filesystem>
 #include <memory>
 #include <optional>
@@ -9,18 +12,16 @@ class QImage;
 
 namespace mupdf_wrapper
 {
-    class Context;
     class Document;
-    class Matrix;
 }
 
 namespace pdf_reader
 {
     class Document
     {
-        std::shared_ptr<mupdf_wrapper::Context> m_context;
+        mupdf_wrapper::Context m_context;
         std::shared_ptr<mupdf_wrapper::Document> m_document;
-        std::shared_ptr<mupdf_wrapper::Matrix> m_matrix;
+        mupdf_wrapper::Matrix m_matrix;
         int m_total_pages;
 
     public:
