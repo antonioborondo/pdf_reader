@@ -1,0 +1,3 @@
+[submodule "mupdf_wrapper"]
+    path = libs/mupdf_wrapper
+    url = ../mupdf_wrapper.git
