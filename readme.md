@@ -42,6 +42,6 @@ Cross-platform PDF reader.
     ```
     mkdir build
     cd build
-    cmake -G "MinGW Makefiles" -DCMAKE_SH=CMAKE_SH-NOTFOUND -DCMAKE_BUILD_TYPE=Release ..
+    cmake -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release ..
     cmake --build .
     ```
