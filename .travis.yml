@@ -17,7 +17,6 @@ env:
     - BUILD_CONFIGURATION=Debug
 
 script:
-  - mkdir build
-  - cd build
+  - mkdir build && cd build
   - cmake -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION ..
   - cmake --build .

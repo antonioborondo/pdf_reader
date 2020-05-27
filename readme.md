@@ -24,7 +24,7 @@ Cross-platform PDF reader.
 
 ## How to build on Windows (MinGW 64-bit)
 1. Install MSYS2 x86_64: https://www.msys2.org
-1. Run `mingw64.exe`
+1. Open "MSYS2 MinGW 64-bit".
 1. Install packages:
     ```
     pacman -S git make mingw-w64-x86_64-cmake mingw-w64-x86_64-gcc mingw-w64-x86_64-make mingw-w64-x86_64-qt5
@@ -33,15 +33,13 @@ Cross-platform PDF reader.
     ```
     pacman -S mingw-w64-x86_64-gdb mingw-w64-x86_64-qt-creator
     ```
-1. Clone repository.
-1. Update submodules:
+1. Clone the repository and update submodules:
     ```
-    git submodule update --init --recursive
+    git clone --recurse-submodules git@github.com:antonioborondo/pdf_reader.git && cd pdf_reader
     ```
 1. Configure and build:
     ```
-    mkdir build
-    cd build
-    cmake -G "MinGW Makefiles" -DCMAKE_SH=CMAKE_SH-NOTFOUND -DCMAKE_BUILD_TYPE=Release ..
+    mkdir build && cd build
+    cmake -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release ..
     cmake --build .
     ```
