@@ -1,17 +1,13 @@
 language: cpp
 
-dist: bionic
+dist: focal
 
 addons:
   apt:
     packages:
-      - g++-8
       - qt5-default
 
 env:
-  global:
-    - CC=gcc-8
-    - CXX=g++-8
   jobs:
     - BUILD_CONFIGURATION=Release
     - BUILD_CONFIGURATION=Debug
