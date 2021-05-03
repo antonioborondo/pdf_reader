@@ -12,18 +12,18 @@ Cross-platform PDF reader.
 - CI implemented with Travis CI.
 
 ## Libraries
-- mupdf_wrapper: https://www.github.com/antonioborondo/mupdf_wrapper
-- Qt: https://www.qt.io
+- mupdf_wrapper: https://github.com/antonioborondo/mupdf_wrapper
+- Qt: https://qt.io
 
 ## Tools
-- CMake: https://www.cmake.org
-- Travis CI: https://www.travis-ci.com
+- CMake: https://cmake.org
+- Travis CI: https://travis-ci.com
 
 ## Resources
-- elementary OS icons: https://www.github.com/elementary/icons
+- elementary OS icons: https://github.com/elementary/icons
 
 ## How to build on Windows (MinGW 64-bit)
-1. Install MSYS2 x86_64: https://www.msys2.org
+1. Install MSYS2 x86_64: https://msys2.org
 1. Open "MSYS2 MinGW 64-bit".
 1. Install packages:
     ```
