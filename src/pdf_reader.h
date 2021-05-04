@@ -22,7 +22,7 @@ namespace pdf_reader
     {
         Q_OBJECT
 
-        std::unique_ptr<Ui::Pdf_reader> m_ui;
+        Ui::Pdf_reader *m_ui;
         std::unique_ptr<Document> m_document;
         std::unique_ptr<Single_page_view> m_single_page_view;
 

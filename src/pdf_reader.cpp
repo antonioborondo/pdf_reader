@@ -14,7 +14,7 @@ namespace pdf_reader
 {
     Pdf_reader::Pdf_reader(QWidget* parent)
         : QMainWindow(parent)
-        , m_ui(std::make_unique<Ui::Pdf_reader>())
+        , m_ui(new Ui::Pdf_reader)
     {
         m_ui->setupUi(this);
         m_single_page_view = std::make_unique<Single_page_view>(*(m_ui->scroll_area_content->layout()));
@@ -22,6 +22,7 @@ namespace pdf_reader
 
     Pdf_reader::~Pdf_reader()
     {
+        delete m_ui;
     }
 
     void Pdf_reader::open_file(const std::filesystem::path& filename)
