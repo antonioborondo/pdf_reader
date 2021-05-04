@@ -10,7 +10,7 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${BINARY_DIRECTORY})
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${BINARY_DIRECTORY})
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BINARY_DIRECTORY})
 
-add_subdirectory(libs/mupdf_wrapper)
+add_subdirectory(third_party/mupdf_wrapper)
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
