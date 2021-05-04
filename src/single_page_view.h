@@ -18,13 +18,12 @@ namespace pdf_reader
         last
     };
 
-    class Single_page_view
+    class Single_page_view : public QLabel
     {
-        QLabel m_page;
         int m_page_number;
 
     public:
-        Single_page_view(QLayout& layout);
+        Single_page_view(QWidget* parent, QLayout* layout);
         void show_page(Document& document, Page_position page_position);
     };
 }

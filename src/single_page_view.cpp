@@ -2,12 +2,13 @@
 
 namespace pdf_reader
 {
-    Single_page_view::Single_page_view(QLayout& layout)
-        : m_page_number{}
+    Single_page_view::Single_page_view(QWidget* parent, QLayout* layout)
+        : QLabel{parent}
+        , m_page_number{}
     {
-        layout.addWidget(&m_page);
+        layout->addWidget(this);
 
-        m_page.setAlignment(Qt::AlignHCenter);
+        setAlignment(Qt::AlignHCenter);
     }
 
     void Single_page_view::show_page(Document& document, Page_position page_position)
@@ -33,7 +34,7 @@ namespace pdf_reader
         const auto page_image = document.get_page_image(page_number);
         if(page_image)
         {
-            m_page.setPixmap(QPixmap::fromImage(*page_image));
+            setPixmap(QPixmap::fromImage(*page_image));
 
             m_page_number = page_number;
         }

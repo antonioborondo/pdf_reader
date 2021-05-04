@@ -15,16 +15,16 @@ namespace Ui
 
 namespace pdf_reader
 {
-    class Document;
     class Single_page_view;
+    class Document;
 
     class Pdf_reader : public QMainWindow
     {
         Q_OBJECT
 
         Ui::Pdf_reader *m_ui;
+        Single_page_view *m_single_page_view;
         std::unique_ptr<Document> m_document;
-        std::unique_ptr<Single_page_view> m_single_page_view;
 
     public:
         explicit Pdf_reader(QWidget* parent = nullptr);
