@@ -1,15 +1,13 @@
-#ifndef PDF_READER_SINGLE_PAGE_VIEW_H
-#define PDF_READER_SINGLE_PAGE_VIEW_H
-
-#include "document.h"
+#pragma once
 
 #include <QLabel>
-#include <QLayout>
 
-#include <memory>
+class QLayout;
 
 namespace pdf_reader
 {
+    class Document;
+
     enum class Page_position
     {
         first,
@@ -18,15 +16,12 @@ namespace pdf_reader
         last
     };
 
-    class Single_page_view
+    class Single_page_view : public QLabel
     {
-        QLabel m_page;
         int m_page_number;
 
     public:
-        Single_page_view(QLayout& layout);
+        Single_page_view(QWidget* parent, QLayout* layout);
         void show_page(Document& document, Page_position page_position);
     };
 }
-
-#endif

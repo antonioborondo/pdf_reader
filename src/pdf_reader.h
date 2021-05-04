@@ -1,5 +1,4 @@
-#ifndef PDF_READER_PDF_READER_H
-#define PDF_READER_PDF_READER_H
+#pragma once
 
 #include <QMainWindow>
 
@@ -15,16 +14,16 @@ namespace Ui
 
 namespace pdf_reader
 {
-    class Document;
     class Single_page_view;
+    class Document;
 
     class Pdf_reader : public QMainWindow
     {
         Q_OBJECT
 
-        std::unique_ptr<Ui::Pdf_reader> m_ui;
+        Ui::Pdf_reader *m_ui;
+        Single_page_view *m_single_page_view;
         std::unique_ptr<Document> m_document;
-        std::unique_ptr<Single_page_view> m_single_page_view;
 
     public:
         explicit Pdf_reader(QWidget* parent = nullptr);
@@ -41,5 +40,3 @@ namespace pdf_reader
         void on_action_last_page_triggered();
     };
 }
-
-#endif
