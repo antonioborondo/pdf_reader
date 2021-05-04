@@ -1,5 +1,9 @@
 #include "single_page_view.h"
 
+#include "document.h"
+
+#include <QLayout>
+
 namespace pdf_reader
 {
     Single_page_view::Single_page_view(QWidget* parent, QLayout* layout)

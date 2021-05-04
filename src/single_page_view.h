@@ -1,15 +1,14 @@
 #ifndef PDF_READER_SINGLE_PAGE_VIEW_H
 #define PDF_READER_SINGLE_PAGE_VIEW_H
 
-#include "document.h"
-
 #include <QLabel>
-#include <QLayout>
 
-#include <memory>
+class QLayout;
 
 namespace pdf_reader
 {
+    class Document;
+
     enum class Page_position
     {
         first,
