@@ -1,5 +1,4 @@
-#ifndef PDF_READER_DOCUMENT_H
-#define PDF_READER_DOCUMENT_H
+#pragma once
 
 #include "mupdf_wrapper/context.h"
 #include "mupdf_wrapper/matrix.h"
@@ -32,5 +31,3 @@ namespace pdf_reader
         int get_total_pages() const;
     };
 }
-
-#endif

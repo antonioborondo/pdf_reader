@@ -1,5 +1,4 @@
-#ifndef PDF_READER_PDF_READER_H
-#define PDF_READER_PDF_READER_H
+#pragma once
 
 #include <QMainWindow>
 
@@ -41,5 +40,3 @@ namespace pdf_reader
         void on_action_last_page_triggered();
     };
 }
-
-#endif

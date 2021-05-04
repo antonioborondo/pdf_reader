@@ -1,5 +1,4 @@
-#ifndef PDF_READER_SINGLE_PAGE_VIEW_H
-#define PDF_READER_SINGLE_PAGE_VIEW_H
+#pragma once
 
 #include <QLabel>
 
@@ -26,5 +25,3 @@ namespace pdf_reader
         void show_page(Document& document, Page_position page_position);
     };
 }
-
-#endif
