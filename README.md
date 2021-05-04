@@ -29,10 +29,6 @@ Cross-platform PDF reader.
     ```
     pacman -S git make mingw-w64-x86_64-cmake mingw-w64-x86_64-gcc mingw-w64-x86_64-make mingw-w64-x86_64-qt5
     ```
-    NOTE: Recommended extra packages for development:
-    ```
-    pacman -S mingw-w64-x86_64-gdb mingw-w64-x86_64-qt-creator
-    ```
 1. Clone the repository and update submodules:
     ```
     git clone --recurse-submodules git@github.com:antonioborondo/pdf_reader.git && cd pdf_reader
