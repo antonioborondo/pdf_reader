@@ -4,50 +4,26 @@ project(pdf_reader)
 
 set(CMAKE_CXX_STANDARD 17)
 
-set(BINARY_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
-
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${BINARY_DIRECTORY})
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${BINARY_DIRECTORY})
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BINARY_DIRECTORY})
-
 add_subdirectory(third_party/mupdf_wrapper)
-
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
-set(CMAKE_AUTOUIC ON)
 
 find_package(Qt5Core REQUIRED)
 find_package(Qt5Gui REQUIRED)
 find_package(Qt5Widgets REQUIRED)
 
-set(SOURCE_FILES_DIRECTORY src)
-
-set(SOURCE_FILES
-    ${SOURCE_FILES_DIRECTORY}/document.h
-    ${SOURCE_FILES_DIRECTORY}/document.cpp
-    ${SOURCE_FILES_DIRECTORY}/main.cpp
-    ${SOURCE_FILES_DIRECTORY}/pdf_reader.cpp
-    ${SOURCE_FILES_DIRECTORY}/pdf_reader.h
-    ${SOURCE_FILES_DIRECTORY}/single_page_view.h
-    ${SOURCE_FILES_DIRECTORY}/single_page_view.cpp
-)
-
-set(FORM_FILES
-    ${SOURCE_FILES_DIRECTORY}/pdf_reader.ui
-)
-
-set(RESOURCE_FILES
-    ${SOURCE_FILES_DIRECTORY}/pdf_reader.qrc
-)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_AUTOUIC ON)
 
 add_executable(pdf_reader
-    ${SOURCE_FILES}
-    ${FORM_FILES}
-    ${RESOURCE_FILES}
-)
-
-add_definitions(
-    -DQT_DEPRECATED_WARNINGS
+    src/document.h
+    src/document.cpp
+    src/main.cpp
+    src/pdf_reader.cpp
+    src/pdf_reader.h
+    src/pdf_reader.qrc
+    src/pdf_reader.ui
+    src/single_page_view.h
+    src/single_page_view.cpp
 )
 
 target_link_libraries(pdf_reader
