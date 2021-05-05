@@ -40,10 +40,6 @@ add_executable(pdf_reader
     ${RESOURCE_FILES}
 )
 
-add_definitions(
-    -DQT_DEPRECATED_WARNINGS
-)
-
 target_link_libraries(pdf_reader
     PRIVATE
     mupdf_wrapper
