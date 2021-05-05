@@ -14,30 +14,16 @@ find_package(Qt5Core REQUIRED)
 find_package(Qt5Gui REQUIRED)
 find_package(Qt5Widgets REQUIRED)
 
-set(SOURCE_FILES_DIRECTORY src)
-
-set(SOURCE_FILES
-    ${SOURCE_FILES_DIRECTORY}/document.h
-    ${SOURCE_FILES_DIRECTORY}/document.cpp
-    ${SOURCE_FILES_DIRECTORY}/main.cpp
-    ${SOURCE_FILES_DIRECTORY}/pdf_reader.cpp
-    ${SOURCE_FILES_DIRECTORY}/pdf_reader.h
-    ${SOURCE_FILES_DIRECTORY}/single_page_view.h
-    ${SOURCE_FILES_DIRECTORY}/single_page_view.cpp
-)
-
-set(FORM_FILES
-    ${SOURCE_FILES_DIRECTORY}/pdf_reader.ui
-)
-
-set(RESOURCE_FILES
-    ${SOURCE_FILES_DIRECTORY}/pdf_reader.qrc
-)
-
 add_executable(pdf_reader
-    ${SOURCE_FILES}
-    ${FORM_FILES}
-    ${RESOURCE_FILES}
+    src/document.h
+    src/document.cpp
+    src/main.cpp
+    src/pdf_reader.cpp
+    src/pdf_reader.h
+    src/pdf_reader.qrc
+    src/pdf_reader.ui
+    src/single_page_view.h
+    src/single_page_view.cpp
 )
 
 target_link_libraries(pdf_reader
